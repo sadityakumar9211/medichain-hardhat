@@ -1,7 +1,7 @@
 {
   "name": "summer-project-hardhat",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the smart contract codebase for summer project",
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test test/unit/*_test.js --network hardhat",
