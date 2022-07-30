@@ -102,5 +102,26 @@ contract PatientMedicalRecord is ReentrancyGuard {
         i_owner = msg.sender;
     }
 
-    
+    //Functions
+
+    function addPatientDetails(
+        address patientAddress,
+        address doctorAddress,
+        uint8 category,
+        string memory IpfsHash
+    ) public onlyDoctor onlyApproved(patientAddress) nonReentrant {
+        Patient memory patient = s_patients[patientAddress];
+
+        if(category.toString() == "0"){
+            patient.vaccinationHash.push(IpfsHash);
+        }else if(category.toString() == "1"){
+            patient.accidentHash.push(IpfsHash);
+        }else if(category.toString() == "2"){
+            patient.chronicHash.push(IpfsHash);
+        }else if(category.toString() == "3"){
+            patient.acuteHash.push(IpfsHash);
+        }
+        //emitting the event.
+        emit patientsDetailsModified(patientAddress, patient);
+    }
 }
