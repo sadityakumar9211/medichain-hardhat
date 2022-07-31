@@ -13,7 +13,7 @@ error PatientMedicalRecords__NotOwner();
 error PatientMedicalRecords__NotDoctor();
 error PatientMedicalRecords__NotApproved();
 
-contract PatientMedicalRecord is ReentrancyGuard {
+contract PatientMedicalRecordSystem is ReentrancyGuard {
     //Type Declarations
     struct ApprovedDoctor {
         address doctorAddress;
