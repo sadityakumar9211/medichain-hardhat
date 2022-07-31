@@ -1,13 +1,19 @@
 const { ether, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
-const Hospitals  = require("../initialHospitalData.json")
+const Hospitals = require("../initialHospitalData.json")
 
-async function addHospital() {
+async function addHospitals() {
     const patientMedicalRecordSystem = await ethers.getContract("PatientMedicalRecordSystem")
-    
-    for(let i in Hospitals){
+
+    for (let i in Hospitals) {
         const hospital = Hospitals[i]
-        const tx = await patientMedicalRecordSystem.addHospitalDetails(hospital.hospitalAddress, hospital.name, hospital.email, hospital.phone)
+        console.log(hospital)
+        const tx = await patientMedicalRecordSystem.addHospitalDetails(
+            hospital.hospitalAddress,
+            hospital.name,
+            hospital.email,
+            hospital.phone
+        )
         await tx.wait(1)
         console.log(`Hospital ${hospital.name} added to PatientMedicalRecordSystem`)
         if (network.config.chainId == 31337) {
@@ -16,7 +22,7 @@ async function addHospital() {
     }
 }
 
-addHospital()
+addHospitals()
     .then(() => process.exit(0))
     .catch((error) => {
         console.log(error)

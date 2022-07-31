@@ -71,17 +71,35 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     //patients can themselves register to the system.
     function registerPatient(
         address _patientAddress,
-        PatientType.Patient memory _patientDetails
+        string memory _name,
+        string memory _profilePicture,
+        uint256 _dob,
+        string memory _phoneNumber,
+        string memory _bloodGroup
     ) external {
-        s_patients[_patientAddress] = _patientDetails;
-        emit patientsDetailsModified(_patientAddress, _patientDetails);
+        PatientType.Patient memory patient;
+        patient.name = _name;
+        patient.patientAddress = _patientAddress;
+        patient.profilePicture = _profilePicture;
+        patient.dob = _dob;
+        patient.phoneNumber = _phoneNumber;
+        patient.bloodGroup = _bloodGroup;
+        patient.dateOfRegistration = block.timestamp;
+        patient.vaccinationHash = new string[](0);
+        patient.accidentHash = new string[](0);
+        patient.chronicHash = new string[](0);
+        patient.acuteHash = new string[](0);
+
+        s_patients[_patientAddress] = patient;
+        //emiting the event
+        emit patientsDetailsModified(_patientAddress, patient);
     }
 
     //Adds the patient details (treatment details). This IPFS hash contains all the information about the treatment in json format pinned to pinata.
     function addPatientDetails(
         address _patientAddress,
         uint8 _category,
-        string calldata _IpfsHash
+        string memory _IpfsHash
     ) external onlyDoctor onlyApproved(_patientAddress, msg.sender) nonReentrant {
         PatientType.Patient memory patient = s_patients[_patientAddress];
 
@@ -102,20 +120,29 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     //this will be done using script by the owner
     function addDoctorDetails(
         address _doctorAddress,
-        DoctorType.Doctor memory _doctorDetails
+        string memory _name, 
+        string memory _doctorRegistrationId,
+        uint256 _dateOfRegistration,
+        string memory _specialization,
+        address _hospitalAddress
     ) external onlyOwner nonReentrant {
-        s_doctors[_doctorAddress] = _doctorDetails;
-        // s_hospitalToDoctor[hospitalAddress][doctorAddress] = doctor;
+        DoctorType.Doctor memory doctor;
+        doctor.name = _name;
+        doctor.doctorRegistrationId = _doctorRegistrationId;
+        doctor.dateOfRegistration = _dateOfRegistration;
+        doctor.specialization = _specialization;
+        doctor.hospitalAddress = _hospitalAddress;
+        s_doctors[_doctorAddress] = doctor;
         //emitting the event.
-        emit doctorsDetailsModified(_doctorAddress, _doctorDetails);
+        emit doctorsDetailsModified(_doctorAddress, doctor);
     }
 
     //this will be done using script by the owner
     function addHospitalDetails(
         address _hospitalAddress,
-        string calldata _name,
-        string calldata _email,
-        string calldata _phoneNumber
+        string memory _name,
+        string memory _email,
+        string memory _phoneNumber
     ) external onlyOwner nonReentrant {
         HospitalType.Hospital memory hospital = s_hospitals[_hospitalAddress];
         hospital.name = _name;
