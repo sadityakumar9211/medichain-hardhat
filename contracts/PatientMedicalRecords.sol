@@ -44,7 +44,7 @@ contract PatientMedicalRecord is ReentrancyGuard {
         string phoneNumber;
         string dateOfRegistration;
         string specialization;
-        string hospitalAddress;
+        address hospitalAddress;
     }
 
     struct Hospital {
@@ -124,4 +124,36 @@ contract PatientMedicalRecord is ReentrancyGuard {
         //emitting the event.
         emit patientsDetailsModified(patientAddress, patient);
     }
+
+    function addDoctorDetails(     //Add or modify details of the doctor.
+        address doctorAddress,
+        string name,
+        string doctorRegistrationId,
+        string aadharNumber,
+        string profilePicture,
+        string dob,
+        string residentialAddress,
+        string email,
+        string phoneNumber,
+        string specialization,
+        address hospitalAddress
+    ) public onlyOwner nonReentrant {
+        Doctor memory doctor = s_doctors[doctorAddress];
+        doctor.name = name;
+        doctor.doctorRegistrationId = doctorRegistrationId;
+        doctor.aadharNumber = aadharNumber;
+        doctor.profilePicture = profilePicture;
+        doctor.dob = dob;
+        doctor.residentialAddress = residentialAddress;
+        doctor.email = email;
+        doctor.phoneNumber = phoneNumber;
+        doctor.specialization = specialization;
+        doctor.hospitalAddress = hospitalAddress;
+        //emitting the event.
+        emit doctorsDetailsModified(doctorAddress, doctor);
+    }
+
+    
+
+
 }
