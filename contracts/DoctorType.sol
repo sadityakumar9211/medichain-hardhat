@@ -11,8 +11,6 @@ library DoctorType {
         address doctorAddress; //account address of doctor
         string aadharNumber;
         string profilePicture;
-        uint256 dob;
-        string residentialAddress;
         string email;
         string phoneNumber;
         uint256 dateOfRegistration;

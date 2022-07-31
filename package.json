@@ -32,6 +32,6 @@
     },
     "dependencies": {
         "babel-eslint": "^10.1.0",
-        "dotenv": "^10.0.0"
+        "dotenv": "^16.0.1"
     }
 }

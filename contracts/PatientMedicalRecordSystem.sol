@@ -68,7 +68,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     }
 
     //Functions
-
     //patients can themselves register to the system.
     function registerPatient(
         address _patientAddress,
