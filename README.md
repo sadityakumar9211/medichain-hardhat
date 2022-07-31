@@ -29,15 +29,19 @@
 > Beware that this is only a patient medical record management system not hospital management system. 
 
 1. Patient 
- - He can view and only view his details only. 
- - He can authorize a doctor for treatment/diagnostic.
+ - Any unregistered patient can register to the system by themselves.✅
+ - He can view and only view his details only. ✅
+ - He can authorize/revoke a doctor for treatment/diagnostic.✅
+
 2. Doctor
- - On given authorization from the patient, he can read and write the patient records. 
+ - On given authorization from the patient, he can read and write the patient records. ✅ ✅
+
 3. Hospital Administration (every hospital has one administrative dept.)
- - this is under whose umbrella a doctor is registered under. 
-4. Chief of Hospital Administrations comitte[Think of a better name] (owner of the smart contract). He can view and write anything on the discretion committee members on the blockchain. 
- - can register a doctor.
- - can register a hospital administration.
+ - this is under whose umbrella a doctor is registered under. ✅
+
+4. Chief of Hospital Administrations comitte[Think of a better name] (owner of the smart contract). He can view the details of the patient in discretion of the committee members. ✅
+ - can register a doctor. ✅
+ - can register a hospital administration. ✅
 
 # Security
 Note: Every transaction data is public so it must be encrypted if it is public. Basically we'll use IPFS to store any and all informations related to patients and doctors and hospitals(if necessary) using json. PIN JSON file on IPFS in pinata. And encrypt the CID using a unique phrase(basically password) set by the patient and it will be encrypted locally by again entering the passphrase while viewing.  
@@ -57,6 +61,14 @@ Note: Every transaction data is public so it must be encrypted if it is public. 
     
 
 - Making and implementing these forms are gonna take time.
+
+
+## Points of Improvements
+ - Patient can revoke the approve status of doctor anytime he/she wants. 
+    - On modification, it will automatically be revoked in two days or when the patient wants. 
+        - The difficulty is that I am not very cool at using checkData and performData arguments conveniently.
+        - I'm not able to pinpoint the patientAddress and doctorAddress to revoke the approval from. Also, this will require multiple checkUpkeeps to run for every patient-doctor combination. This is also not possible without keeping doctors and patients addresses in an array. 
+        - Keeping these in array on smart contract is very expensive. 
 
 
 

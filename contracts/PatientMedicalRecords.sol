@@ -11,7 +11,7 @@ error PatientMedicalRecords__NotOwner();
 error PatientMedicalRecords__NotDoctor();
 error PatientMedicalRecords__NotApproved();
 
-contract PatientMedicalRecord is ReentrancyGuard {
+contract PatientMedicalRecord is ReentrancyGuard, KeeperCompatibleInterface {
     //Type Declarations
 
     struct Patient {
@@ -19,12 +19,12 @@ contract PatientMedicalRecord is ReentrancyGuard {
         address patientAddress; //account address of patient
         string aadharNumber;
         string profilePicture; //ipfs hash for profile picture.
-        string dob;
+        uint256 dob;
         string residentialAddress;
         string email;
         string phoneNumber;
         string bloodGroup;
-        string dateOfRegistration; //the date of registration of patient to the system. Tells which records are not in the system.
+        uint256 dateOfRegistration; //the date of registration of patient to the system. Tells which records are not in the system.
         //Medical Records
         string[] vaccinationHash; //0
         string[] accidentHash; // 1
@@ -38,11 +38,11 @@ contract PatientMedicalRecord is ReentrancyGuard {
         address doctorAddress; //account address of doctor
         string aadharNumber;
         string profilePicture;
-        string dob;
+        uint256 dob;
         string residentialAddress;
         string email;
         string phoneNumber;
-        string dateOfRegistration;
+        uint256 dateOfRegistration;
         string specialization;
         address hospitalAddress;
     }
@@ -52,7 +52,7 @@ contract PatientMedicalRecord is ReentrancyGuard {
         address hospitalAddress; //account address of hospital
         string email;
         string phoneNumber;
-        string dateOfRegistration;
+        uint256 dateOfRegistration;
         address[] doctorAddresses; //array of doctor addresses
     }
 
@@ -61,13 +61,15 @@ contract PatientMedicalRecord is ReentrancyGuard {
     mapping(address => Doctor) private s_doctors;
     mapping(address => Hospital) private s_hospitals;
 
-    mapping(address => mapping(address => Doctor)) private s_hospitalToDoctor; //hospital to doctor mapping
-    mapping(address => mapping(address => Doctor)) private s_approvedDoctors; //patient to doctor mapping
+    //mapping(address => mapping(address => Doctor)) private s_hospitalToDoctor; //hospital to doctor mapping
+    //patientAddress -> doctorAddress -> approvdTimestamp
+    mapping(address => mapping(address => uint256)) private s_approvedDoctors; //patient to doctor mapping and doctor to approve-timestamp mapping
 
-    address private i_owner;
+    address private immutable i_owner;
 
     //Events
     event DoctorApproved(address indexed doctorAddress, address indexed patientAddress);
+    event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
     event patientsDetailsModified(address indexed patientAddress, Patient indexed patientDetails); //added or modified
     event doctorsDetailsModified(address indexed doctorAddress, Doctor indexed doctorDetails); //added or modified to the mapping
     event hospitalsDetailsModified(
@@ -91,48 +93,83 @@ contract PatientMedicalRecord is ReentrancyGuard {
     }
 
     modifier onlyApproved(address patientAddress) {
-        if (s_approvedDoctors[patientAddress][msg.sender].doctorAddress != msg.sender) {
+        if (s_approvedDoctors[patientAddress][msg.sender] == 0) {
+            //if approve timestamp is == 0 (same as epoch time)
             revert PatientMedicalRecords__NotApproved();
         }
         _;
     }
 
-    constructor() {
+    constructor(uint256 revokeApprovalInterval) {
         console.log("PatientMedicalRecord Contract Constructor Called");
         i_owner = msg.sender;
+        i_revokeApprovalInterval = revokeApprovalInterval;
     }
 
     //Functions
 
-    function addPatientDetails(
-        address patientAddress,
-        address doctorAddress,
-        uint8 category,
-        string memory IpfsHash
-    ) public onlyDoctor onlyApproved(patientAddress) nonReentrant {
-        Patient memory patient = s_patients[patientAddress];
-
-        if(category.toString() == "0"){
-            patient.vaccinationHash.push(IpfsHash);
-        }else if(category.toString() == "1"){
-            patient.accidentHash.push(IpfsHash);
-        }else if(category.toString() == "2"){
-            patient.chronicHash.push(IpfsHash);
-        }else if(category.toString() == "3"){
-            patient.acuteHash.push(IpfsHash);
-        }
-        s_patients[patientAddress] = patient;
-        //emitting the event.
-        emit patientsDetailsModified(patientAddress, patient);
+    //patients can themselves register to the system.
+    function registerPatient(
+        address _patientAddress,
+        string calldata _name,
+        string calldata _aadharNumber,
+        string calldata _profilePicture,
+        uint256 _dob,
+        string calldata _residentialAddress,
+        string calldata _email,
+        string calldata _phoneNumber,
+        string calldata _bloodGroup
+    ) external {
+        Patient memory patient;
+        patient.name = _name;
+        patient.patientAddress = _patientAddress;
+        patient.aadharNumber = _aadharNumber;
+        patient.profilePicture = _profilePicture;
+        patient.dob = _dob;
+        patient.residentialAddress = _residentialAddress;
+        patient.email = _email;
+        patient.phoneNumber = _phoneNumber;
+        patient.bloodGroup = _bloodGroup;
+        patient.dateOfRegistration = block.timestamp;
+        patient.vaccinationHash = new string[](0);
+        patient.accidentHash = new string[](0);
+        patient.chronicHash = new string[](0);
+        patient.acuteHash = new string[](0);
+        s_patients[_patientAddress] = patient;
+        emit patientsDetailsModified(_patientAddress, patient);
     }
 
-    function addDoctorDetails(     //Add or modify details of the doctor.
+    //Adds the patient details (treatment details). This IPFS hash contains all the information about the treatment in json format pinned to pinata.
+    function addPatientDetails(
+        address _patientAddress,
+        uint8 _category,
+        string calldata _IpfsHash
+    ) external onlyDoctor onlyApproved(_patientAddress) nonReentrant {
+        Patient memory patient = s_patients[_patientAddress];
+
+        if (_category == 0) {
+            s_patients[_patientAddress].vaccinationHash.push(_IpfsHash);
+        } else if (_category == 1) {
+            s_patients[_patientAddress].accidentHash.push(_IpfsHash);
+        } else if (_category == 2) {
+            s_patients[_patientAddress].chronicHash.push(_IpfsHash);
+        } else if (_category == 3) {
+            s_patients[_patientAddress].acuteHash.push(_IpfsHash);
+        }
+        s_patients[_patientAddress] = patient;
+        //emitting the event.
+        emit patientsDetailsModified(_patientAddress, s_patients[_patientAddress]);
+    }
+
+    //this will be done using script by the owner
+    function addDoctorDetails(
+        //Add or modify details of the doctor.
         address doctorAddress,
         string calldata name,
         string calldata doctorRegistrationId,
         string calldata aadharNumber,
         string calldata profilePicture,
-        string calldata dob,
+        uint256 dob,
         string calldata residentialAddress,
         string calldata email,
         string calldata phoneNumber,
@@ -150,11 +187,14 @@ contract PatientMedicalRecord is ReentrancyGuard {
         doctor.phoneNumber = phoneNumber;
         doctor.specialization = specialization;
         doctor.hospitalAddress = hospitalAddress;
+
         s_doctors[doctorAddress] = doctor;
+        // s_hospitalToDoctor[hospitalAddress][doctorAddress] = doctor;
         //emitting the event.
         emit doctorsDetailsModified(doctorAddress, doctor);
     }
 
+    //this will be done using script by the owner
     function addHospitalDetails(
         address hospitalAddress,
         string calldata name,
@@ -166,13 +206,69 @@ contract PatientMedicalRecord is ReentrancyGuard {
         hospital.name = name;
         hospital.email = email;
         hospital.phoneNumber = phoneNumber;
-        hospital.doctorAddresses = doctorAddress[0:];     //copying the entire array.
+        hospital.doctorAddresses = doctorAddress[0:]; //copying the entire array.
         s_hospitals[hospitalAddress] = hospital;
         //emitting the event.
         emit hospitalsDetailsModified(hospitalAddress, hospital);
     }
 
+    //approving a doctor for 2 days
+    function approveDoctor(address doctorAddress) external nonReentrant {
+        s_approvedDoctors[msg.sender][doctorAddress] = block.timestamp; //current timestamp
+        emit DoctorApproved(doctorAddress, msg.sender)
+    }
+
+    //revoking the approval of a doctor
+    function revokeApproval(address doctorAddress) external nonReentrant{
+        s_approvedDoctors[msg.sender][doctorAddress] = 0;  //timestamp 0 means that the doctor is not authorized. 
+        emit DoctorRevoked(doctorAddress, msg.sender);
+    }
 
 
+    //view or pure functions
+    //patient viewing his own records only
+    function getMyDetails() external view returns (Patient memory) {
+        return s_patients[msg.sender];
+    }
+
+    //authorized doctor viewing patient's records
+    function getPatientDetails(address _patientAddress)
+        external
+        view
+        onlyDoctor
+        onlyApproved(_patientAddress)
+        returns (Patient memory)
+    {
+        return s_patients[_patientAddress];
+    }
+
+    function getDoctorDetails(address _doctorAddress)
+        external
+        view
+        returns (Doctor memory)
+    {
+        return s_doctors[_doctorAddress];
+    }
+
+    function getHospitalDetails(address _hospitalAddress)
+        external
+        view
+        returns (Hospital memory)
+    {
+        return s_hospitals[_hospitalAddress];
+    }
+
+    //patients can check his approved doctor's list.
+    function getApprovedDoctors() external view returns (mapping((address => uint256))) {
+        return s_approvedDoctors[msg.sender];
+    }
+
+    function getPatientRecordsByOwner(address _patientAddress) external view onlyOwner nonReentrant returns(Patient memory){
+        return s_patients[_patientAddress];
+    }
+
+    function getOwner() external pure returns (address) {
+        return i_owner;
+    }
 
 }
