@@ -95,8 +95,8 @@ module.exports = {
         // coinmarketcap: process.env.COINMARKETCAP_API_KEY,
     },
     contractSizer: {
-        runOnCompile: false,
-        only: ["Raffle"],
+        runOnCompile: true,
+        // only: ["Raffle"],
     },
     namedAccounts: {
         deployer: {
