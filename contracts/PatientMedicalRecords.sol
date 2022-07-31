@@ -121,23 +121,24 @@ contract PatientMedicalRecord is ReentrancyGuard {
         }else if(category.toString() == "3"){
             patient.acuteHash.push(IpfsHash);
         }
+        s_patients[patientAddress] = patient;
         //emitting the event.
         emit patientsDetailsModified(patientAddress, patient);
     }
 
     function addDoctorDetails(     //Add or modify details of the doctor.
         address doctorAddress,
-        string name,
-        string doctorRegistrationId,
-        string aadharNumber,
-        string profilePicture,
-        string dob,
-        string residentialAddress,
-        string email,
-        string phoneNumber,
-        string specialization,
+        string calldata name,
+        string calldata doctorRegistrationId,
+        string calldata aadharNumber,
+        string calldata profilePicture,
+        string calldata dob,
+        string calldata residentialAddress,
+        string calldata email,
+        string calldata phoneNumber,
+        string calldata specialization,
         address hospitalAddress
-    ) public onlyOwner nonReentrant {
+    ) external onlyOwner nonReentrant {
         Doctor memory doctor = s_doctors[doctorAddress];
         doctor.name = name;
         doctor.doctorRegistrationId = doctorRegistrationId;
@@ -149,11 +150,29 @@ contract PatientMedicalRecord is ReentrancyGuard {
         doctor.phoneNumber = phoneNumber;
         doctor.specialization = specialization;
         doctor.hospitalAddress = hospitalAddress;
+        s_doctors[doctorAddress] = doctor;
         //emitting the event.
         emit doctorsDetailsModified(doctorAddress, doctor);
     }
 
-    
+    function addHospitalDetails(
+        address hospitalAddress,
+        string calldata name,
+        string calldata email,
+        string calldata phoneNumber,
+        address[] calldata doctorAddress
+    ) external onlyOwner nonReentrant {
+        Hospital memory hospital = s_hospitals[hospitalAddress];
+        hospital.name = name;
+        hospital.email = email;
+        hospital.phoneNumber = phoneNumber;
+        hospital.doctorAddresses = doctorAddress[0:];     //copying the entire array.
+        s_hospitals[hospitalAddress] = hospital;
+        //emitting the event.
+        emit hospitalsDetailsModified(hospitalAddress, hospital);
+    }
+
+
 
 
 }
