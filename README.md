@@ -50,6 +50,11 @@
 # Security
 Note: Every transaction data is public so it must be encrypted if it is public. Basically we'll use IPFS to store any and all informations related to patients and doctors and hospitals(if necessary) using json. PIN JSON file on IPFS in pinata. And encrypt the CID using a unique phrase(basically password) set by the patient and it will be encrypted locally by again entering the passphrase while viewing.  
 
+# Work Left in this directory
+- Think how a patient will approve the doctor. Ask others. 
+- IPFS encryption and hashing WORK is left which needs to be done side by side of frontend.
+- Also I have to add updateFrontend.js file in the deploy directory. 
+
 - unidentified account address is not given access to the site. The site is only displaying content if the patient is registered. If the patient is not registered then he is given option to register by providing required information.
     - Aadhar Number
     - Name
@@ -73,6 +78,5 @@ Note: Every transaction data is public so it must be encrypted if it is public. 
         - The difficulty is that I am not very cool at using checkData and performData arguments conveniently.
         - I'm not able to pinpoint the patientAddress and doctorAddress to revoke the approval from. Also, this will require multiple checkUpkeeps to run for every patient-doctor combination. This is also not possible without keeping doctors and patients addresses in an array. 
         - Keeping these in array on smart contract is very expensive. 
-
 
 
