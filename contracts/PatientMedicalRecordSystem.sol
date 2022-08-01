@@ -72,7 +72,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     function registerPatient(
         address _patientAddress,
         string memory _name,
-        string memory _profilePicture,
         uint256 _dob,
         string memory _phoneNumber,
         string memory _bloodGroup
@@ -80,7 +79,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         PatientType.Patient memory patient;
         patient.name = _name;
         patient.patientAddress = _patientAddress;
-        patient.profilePicture = _profilePicture;
         patient.dob = _dob;
         patient.phoneNumber = _phoneNumber;
         patient.bloodGroup = _bloodGroup;

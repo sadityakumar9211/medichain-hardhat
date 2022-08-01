@@ -15,10 +15,10 @@
 6. Execute the plan.
 
 # SRS
-1.  When a patient authorizes a doctor (using some system ***1***), the doctor can access the patients whole medical record including *vaccination*, *accident* *chronic disease*, *acute disease*. 
-    1.  The authorization is only valid for 2 days and the authorization get revoked automatically in 2 days and the patient has to reauthorize again. 
+1.  Only patient can access the his whole medical record including *vaccination*, *accident* *chronic disease*, *acute disease*. 
+    1.  He can show the details to doctor as and when he wants. 
     2. The doctor is the direct dealing party with the patient. In this case if the doctor gets transferred then also for a particular treatment we can conveniently pinpoint the doctor. 
-    3. With the authorization the doctor gets the write access too. He can add a new treatment plan or diagnostic details. 
+    3. The doctor gets the write access. He can add a new treatment plan or diagnostic details in the patients database but he can only read the patient information if the patient shows him that.  
 
 2. **Patient Login/ Authorization:** As this is going to be deployed to a public blockchain, EVM compatible chains preferably by design, the patients and doctors and hospitals and admin are all just a bunch of ***account addresses***. They are identified by account addresses which can be created basically out of the air and are unique. We will use metamask wallet to login user to the site on mobile or pc. 
 
@@ -31,13 +31,12 @@
 1. Patient 
  - Any unregistered patient can register to the system by themselves.✅
  - He can view and only view his details only. ✅
- - He can authorize/revoke a doctor for treatment/diagnostic.✅
 
 2. Doctor
- - On given authorization from the patient, he can read and write the patient records. ✅ ✅
+ - A doctor can write the patient records. ✅ ✅
 
 3. Hospital Administration (every hospital has one administrative dept.)
- - this is under whose umbrella a doctor is registered under. ✅
+ - This is under whose umbrella a doctor is registered under. ✅
 
 4. Chief of Hospital Administrations comitte[Think of a better name] (owner of the smart contract). He can view the details of the patient in discretion of the committee members. ✅
  - can register a doctor. ✅
@@ -45,13 +44,14 @@
 
 
  ## Format of Patient Medical Record: 
- It is basically a json uploaded to IPFS without encrypting the hash, but it contains the encrypted IPFS hash of PDF file and/or image. This is full details of the record. 
+ It is basically a json uploaded to IPFS without encrypting the hash, but it contains the encrypted IPFS hash of PDF file and/or image. This is full details of the record. This encrypted IFPS file can only be opened by the patient himself. He can download the file and send to whoever he wants. 
 
 # Security
-Note: Every transaction data is public so it must be encrypted if it is public. Basically we'll use IPFS to store any and all informations related to patients and doctors and hospitals(if necessary) using json. PIN JSON file on IPFS in pinata. And encrypt the CID using a unique phrase(basically password) set by the patient and it will be encrypted locally by again entering the passphrase while viewing.  
+Note: Every transaction data is public so it must be encrypted if it is public. Basically we'll use IPFS to store any and all informations related to patients and doctors and hospitals(if necessary) using json. PIN JSON file on IPFS in pinata. 
+- We will use file encryption and then upload the encrypted file to IPFS. 
+- And encrypt the CID using a unique phrase(basically password) set by the patient and it will be encrypted locally by again entering the passphrase while viewing.   
 
 # Work Left in this directory
-- Think how a patient will approve the doctor. Ask others. 
 - IPFS encryption and hashing WORK is left which needs to be done side by side of frontend.
 - Also I have to add updateFrontend.js file in the deploy directory. 
 

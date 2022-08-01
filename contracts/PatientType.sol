@@ -8,7 +8,6 @@ library PatientType {
     struct Patient {
         string name;        //
         address patientAddress; //account address of patient     //
-        string profilePicture; //ipfs hash for profile picture.
         uint256 dob;
         string phoneNumber;
         string bloodGroup;
