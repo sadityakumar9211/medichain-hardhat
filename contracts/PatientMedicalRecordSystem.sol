@@ -25,14 +25,14 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     mapping(address => DoctorType.Doctor) private s_doctors;
     mapping(address => HospitalType.Hospital) private s_hospitals;
 
-    //patientAddress -> doctorAddress -> approvdTimestamp
-    mapping(address => ApprovedDoctor) private s_approvedDoctor; //A patient can only approve one doctor at a time. Approving other doctor will override the previous approval. This is done for security purpose.
+    // //patientAddress -> doctorAddress -> approvdTimestamp
+    // mapping(address => ApprovedDoctor) private s_approvedDoctor; //A patient can only approve one doctor at a time. Approving other doctor will override the previous approval. This is done for security purpose.
 
     address private immutable i_owner;
 
     //Events
-    event DoctorApproved(address indexed doctorAddress, address indexed patientAddress);
-    event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
+    // event DoctorApproved(address indexed doctorAddress, address indexed patientAddress);
+    // event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
     event patientsDetailsModified(address indexed patientAddress, PatientType.Patient indexed patientDetails); //added or modified
     event doctorsDetailsModified(address indexed doctorAddress, DoctorType.Doctor indexed doctorDetails); //added or modified to the mapping
     event hospitalsDetailsModified(
@@ -55,13 +55,13 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         _;
     }
 
-    modifier onlyApproved(address _patientAddress, address _doctorAddress) {
-        if (s_approvedDoctor[_patientAddress].doctorAddress != _doctorAddress) {
-            //if approve timestamp is == 0 (same as epoch time)
-            revert PatientMedicalRecords__NotApproved();
-        }
-        _;
-    }
+    // modifier onlyApproved(address _patientAddress, address _doctorAddress) {
+    //     if (s_approvedDoctor[_patientAddress].doctorAddress != _doctorAddress) {
+    //         //if approve timestamp is == 0 (same as epoch time)
+    //         revert PatientMedicalRecords__NotApproved();
+    //     }
+    //     _;
+    // }
 
     constructor() {
         i_owner = msg.sender;
@@ -99,8 +99,8 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     function addPatientDetails(
         address _patientAddress,
         uint8 _category,
-        string memory _IpfsHash
-    ) external onlyDoctor onlyApproved(_patientAddress, msg.sender) nonReentrant {
+        string memory _IpfsHash      //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
+    ) external onlyDoctor /*onlyApproved(_patientAddress, msg.sender)*/ nonReentrant {
         PatientType.Patient memory patient = s_patients[_patientAddress];
 
         if (_category == 0) {
@@ -153,16 +153,16 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         emit hospitalsDetailsModified(_hospitalAddress, hospital);
     }
 
-    function approveDoctor(address _doctorAddress) external nonReentrant {
-        s_approvedDoctor[msg.sender].timestampOfApproval = block.timestamp; //current timestamp
-        emit DoctorApproved(_doctorAddress, msg.sender);
-    }
+    // function approveDoctor(address _doctorAddress) external nonReentrant {
+    //     s_approvedDoctor[msg.sender].timestampOfApproval = block.timestamp; //current timestamp
+    //     emit DoctorApproved(_doctorAddress, msg.sender);
+    // }
 
-    //revoking the approval of a doctor
-    function revokeApproval(address _doctorAddress) external nonReentrant {
-        s_approvedDoctor[msg.sender].doctorAddress = 0x0000000000000000000000000000000000000000; //timestamp 0 means that the doctor is not authorized.
-        emit DoctorRevoked(_doctorAddress, msg.sender);
-    }
+    // //revoking the approval of a doctor
+    // function revokeApproval(address _doctorAddress) external nonReentrant {
+    //     s_approvedDoctor[msg.sender].doctorAddress = 0x0000000000000000000000000000000000000000; //timestamp 0 means that the doctor is not authorized.
+    //     emit DoctorRevoked(_doctorAddress, msg.sender);
+    // }
 
     //view or pure functions
     //patient viewing his own records only
@@ -175,7 +175,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         external
         view
         onlyDoctor
-        onlyApproved(_patientAddress, msg.sender)
+        /*onlyApproved(_patientAddress, msg.sender)*/
         returns (PatientType.Patient memory)
     {
         return s_patients[_patientAddress];
@@ -189,10 +189,10 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         return s_hospitals[_hospitalAddress];
     }
 
-    //patients can check his approved doctor's list.
-    function getApprovedDoctor() external view returns (ApprovedDoctor memory) {
-        return s_approvedDoctor[msg.sender];
-    }
+    // //patients can check his approved doctor's list.
+    // function getApprovedDoctor() external view returns (ApprovedDoctor memory) {
+    //     return s_approvedDoctor[msg.sender];
+    // }
 
     function getPatientRecordsByOwner(address _patientAddress)
         external
