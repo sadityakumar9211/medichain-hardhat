@@ -17,8 +17,12 @@ const networkConfig = {
 
 
 const developmentChains = ["hardhat", "localhost"]
+const CATEGORY = 0
+const IPFS_HASH = ""
 
 module.exports = {
     networkConfig,
     developmentChains,
+    CATEGORY,
+    IPFS_HASH,
 }

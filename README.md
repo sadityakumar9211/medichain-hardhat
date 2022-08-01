@@ -43,6 +43,10 @@
  - can register a doctor. ✅
  - can register a hospital administration. ✅
 
+
+ ## Format of Patient Medical Record: 
+ It is basically a json uploaded to IPFS without encrypting the hash, but it contains the encrypted IPFS hash of PDF file and/or image. This is full details of the record. 
+
 # Security
 Note: Every transaction data is public so it must be encrypted if it is public. Basically we'll use IPFS to store any and all informations related to patients and doctors and hospitals(if necessary) using json. PIN JSON file on IPFS in pinata. And encrypt the CID using a unique phrase(basically password) set by the patient and it will be encrypted locally by again entering the passphrase while viewing.  
 
