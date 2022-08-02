@@ -19,7 +19,14 @@ const RINKEBY_RPC_URL =
 const KOVAN_RPC_URL = process.env.KOVAN_RPC_URL || "https://eth-kovan.alchemyapi.io/v2/your-api-key"
 const POLYGON_MAINNET_RPC_URL =
     process.env.POLYGON_MAINNET_RPC_URL || "https://polygon-mainnet.alchemyapi.io/v2/your-api-key"
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
+
+
+const OWNER_PRIVATE_KEY = process.env.OWNER_PRIVATE_KEY || "0x"
+const HOSPITAL_PRIVATE_KEY = process.env.HOSPITAL_PRIVATE_KEY || "0x"
+const DOCTOR_PRIVATE_KEY = process.env.DOCTOR_PRIVATE_KEY || "0x"
+const PATIENT_PRIVATE_KEY = process.env.PATIENT_PRIVATE_KEY || "0x"
+
+
 // optional
 const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 
@@ -43,7 +50,7 @@ module.exports = {
         },
         kovan: {
             url: KOVAN_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             //accounts: {
             //     mnemonic: MNEMONIC,
             // },
@@ -53,7 +60,7 @@ module.exports = {
         },
         rinkeby: {
             url: RINKEBY_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             //   accounts: {
             //     mnemonic: MNEMONIC,
             //   },
@@ -63,7 +70,7 @@ module.exports = {
         },
         mainnet: {
             url: MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             //   accounts: {
             //     mnemonic: MNEMONIC,
             //   },
@@ -73,7 +80,7 @@ module.exports = {
         },
         polygon: {
             url: POLYGON_MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             saveDeployments: true,
             chainId: 137,
             blockConfirmations: 6, 
@@ -103,10 +110,15 @@ module.exports = {
             default: 0, // here this will by default take the first account as deployer
             1: 0, // similarly on mainnet it will take the 0th account as deployer. Note though that depending on how hardhat network are configured, the account 0 on one network can be different than on another
         },
-        user: {
-            default: 5,
+        hospital: {
+            default: 1,
         },
-        
+        doctor: {
+            default: 2, 
+        },
+        patient:{
+            default: 3,
+        },
     },
     solidity: {
         compilers: [
