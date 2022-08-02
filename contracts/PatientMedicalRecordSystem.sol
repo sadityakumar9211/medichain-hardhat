@@ -33,11 +33,32 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     //Events
     // event DoctorApproved(address indexed doctorAddress, address indexed patientAddress);
     // event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
-    event patientsDetailsModified(address indexed patientAddress, PatientType.Patient indexed patientDetails); //added or modified
-    event doctorsDetailsModified(address indexed doctorAddress, DoctorType.Doctor indexed doctorDetails); //added or modified to the mapping
+    event patientsDetailsModified(
+        address indexed patientAddress,
+        string indexed name, 
+        string[] indexed chronicHash,
+        uint256 dob, 
+        string bloodGroup, 
+        uint256 dateOfRegistration,
+        string[] vaccinationHash,
+        string phoneNumber,
+        string[] accidentHash,
+        string[] acuteHash
+
+    ); //added or modified
+    event doctorsDetailsModified(
+        address indexed doctorAddress,
+        string indexed name, 
+        string indexed doctorRegistrationId,
+        uint256 dateOfRegistration,
+        string specialization,
+        address hospitalAddress
+    ); //added or modified to the mapping
     event hospitalsDetailsModified(
         address indexed hospitalAddress,
-        HospitalType.Hospital indexed hospitalDetails
+        string indexed name,
+        string indexed email,
+        string phoneNumber
     ); //added(mostly) or modified
 
     //modifiers
@@ -83,22 +104,27 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         patient.phoneNumber = _phoneNumber;
         patient.bloodGroup = _bloodGroup;
         patient.dateOfRegistration = block.timestamp;
-        patient.vaccinationHash = new string[](0);   //0
-        patient.accidentHash = new string[](0);     // 1    
-        patient.chronicHash = new string[](0);      //2    
-        patient.acuteHash = new string[](0);        //3
- 
+        patient.vaccinationHash = new string[](0); //0
+        patient.accidentHash = new string[](0); // 1
+        patient.chronicHash = new string[](0); //2
+        patient.acuteHash = new string[](0); //3
+
         s_patients[_patientAddress] = patient;
         //emiting the event
-        emit patientsDetailsModified(_patientAddress, patient);
+        emit patientsDetailsModified(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
     }
 
     //Adds the patient details (treatment details). This IPFS hash contains all the information about the treatment in json format pinned to pinata.
     function addPatientDetails(
         address _patientAddress,
         uint8 _category,
-        string memory _IpfsHash      //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
-    ) external onlyDoctor /*onlyApproved(_patientAddress, msg.sender)*/ nonReentrant {
+        string memory _IpfsHash //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
+    )
+        external
+        onlyDoctor
+        /*onlyApproved(_patientAddress, msg.sender)*/
+        nonReentrant
+    {
         PatientType.Patient memory patient = s_patients[_patientAddress];
 
         if (_category == 0) {
@@ -112,13 +138,13 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         }
         s_patients[_patientAddress] = patient;
         //emitting the event.
-        emit patientsDetailsModified(_patientAddress, s_patients[_patientAddress]);
+        emit patientsDetailsModified(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
     }
 
     //this will be done using script by the owner
     function addDoctorDetails(
         address _doctorAddress,
-        string memory _name, 
+        string memory _name,
         string memory _doctorRegistrationId,
         uint256 _dateOfRegistration,
         string memory _specialization,
@@ -132,7 +158,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         doctor.hospitalAddress = _hospitalAddress;
         s_doctors[_doctorAddress] = doctor;
         //emitting the event.
-        emit doctorsDetailsModified(_doctorAddress, doctor);
+        emit doctorsDetailsModified(_doctorAddress, doctor.name, doctor.doctorRegistrationId, doctor.dateOfRegistration, doctor.specialization, doctor.hospitalAddress);
     }
 
     //this will be done using script by the owner
@@ -148,7 +174,12 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         hospital.phoneNumber = _phoneNumber;
         s_hospitals[_hospitalAddress] = hospital;
         //emitting the event.
-        emit hospitalsDetailsModified(_hospitalAddress, hospital);
+        emit hospitalsDetailsModified(
+            _hospitalAddress,
+            hospital.name,
+            hospital.email,
+            hospital.phoneNumber
+        );
     }
 
     // function approveDoctor(address _doctorAddress) external nonReentrant {
@@ -173,17 +204,27 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         external
         view
         onlyDoctor
-        /*onlyApproved(_patientAddress, msg.sender)*/
-        returns (PatientType.Patient memory)
+        returns (
+            /*onlyApproved(_patientAddress, msg.sender)*/
+            PatientType.Patient memory
+        )
     {
         return s_patients[_patientAddress];
     }
 
-    function getDoctorDetails(address _doctorAddress) external view returns (DoctorType.Doctor memory) {
+    function getDoctorDetails(address _doctorAddress)
+        external
+        view
+        returns (DoctorType.Doctor memory)
+    {
         return s_doctors[_doctorAddress];
     }
 
-    function getHospitalDetails(address _hospitalAddress) external view returns (HospitalType.Hospital memory) {
+    function getHospitalDetails(address _hospitalAddress)
+        external
+        view
+        returns (HospitalType.Hospital memory)
+    {
         return s_hospitals[_hospitalAddress];
     }
 
