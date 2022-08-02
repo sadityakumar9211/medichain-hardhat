@@ -33,7 +33,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     //Events
     // event DoctorApproved(address indexed doctorAddress, address indexed patientAddress);
     // event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
-    event patientsDetailsModified(
+    event AddedPatient(
         address indexed patientAddress,
         string indexed name, 
         string[] indexed chronicHash,
@@ -46,7 +46,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string[] acuteHash
 
     ); //added or modified
-    event doctorsDetailsModified(
+    event AddedDoctor(
         address indexed doctorAddress,
         string indexed name, 
         string indexed doctorRegistrationId,
@@ -54,7 +54,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string specialization,
         address hospitalAddress
     ); //added or modified to the mapping
-    event hospitalsDetailsModified(
+    event AddedHospital(
         address indexed hospitalAddress,
         string indexed name,
         string indexed email,
@@ -111,7 +111,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
 
         s_patients[_patientAddress] = patient;
         //emiting the event
-        emit patientsDetailsModified(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
+        emit AddedPatient(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
     }
 
     //Adds the patient details (treatment details). This IPFS hash contains all the information about the treatment in json format pinned to pinata.
@@ -138,7 +138,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         }
         s_patients[_patientAddress] = patient;
         //emitting the event.
-        emit patientsDetailsModified(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
+        emit AddedPatient(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
     }
 
     //this will be done using script by the owner
@@ -158,7 +158,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         doctor.hospitalAddress = _hospitalAddress;
         s_doctors[_doctorAddress] = doctor;
         //emitting the event.
-        emit doctorsDetailsModified(_doctorAddress, doctor.name, doctor.doctorRegistrationId, doctor.dateOfRegistration, doctor.specialization, doctor.hospitalAddress);
+        emit AddedDoctor(_doctorAddress, doctor.name, doctor.doctorRegistrationId, doctor.dateOfRegistration, doctor.specialization, doctor.hospitalAddress);
     }
 
     //this will be done using script by the owner
@@ -174,7 +174,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         hospital.phoneNumber = _phoneNumber;
         s_hospitals[_hospitalAddress] = hospital;
         //emitting the event.
-        emit hospitalsDetailsModified(
+        emit AddedHospital(
             _hospitalAddress,
             hospital.name,
             hospital.email,
