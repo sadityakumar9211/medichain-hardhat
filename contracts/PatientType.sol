@@ -6,8 +6,8 @@ pragma solidity ^0.8.7;
 library PatientType {
     //Type Declaration
     struct Patient {
-        string name;        //
-        address patientAddress; //account address of patient     //
+        string name;        
+        address patientAddress; //account address of patient     
         uint256 dob;
         string phoneNumber;
         string bloodGroup;
@@ -19,3 +19,4 @@ library PatientType {
         string[] acuteHash; //3
     }
 }
+

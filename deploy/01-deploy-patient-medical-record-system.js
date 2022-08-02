@@ -1,17 +1,20 @@
 const { network } = require("hardhat")
-const { developmentChains} = require("../helper-hardhat-config")
+const { developmentChains, VERIFICATION_BLOCK_CONFIRMATIONS} = require("../helper-hardhat-config")
 const { verify } = require("../utils/verify")
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-
+    const waitBlockConfirmations = developmentChains.includes(network.name)
+        ? 1
+        : VERIFICATION_BLOCK_CONFIRMATIONS
+    console.log(`The block confirmations required is: ${waitBlockConfirmations}`)
     log("----------------------------------------")
     const patientMedicalRecordSystem = await deploy("PatientMedicalRecordSystem", {
         from: deployer,
         args: [],
         log: true,
-        waitConfirmations: network.config.blockConfirmations || 1,
+        waitConfirmations: waitBlockConfirmations,
     })
     log("----------------------------------------")
     log(`PatientMedicalRecordSystem contract deployed at: ${patientMedicalRecordSystem.address}`)
