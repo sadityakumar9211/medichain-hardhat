@@ -66,7 +66,7 @@ Note: Every transaction data is public so it must be encrypted if it is public. 
     - Blood Group
         - Save date of registration and display in the patient's record to ensure the reliability of information of patient's medical record system.
 
-- For every thing I need a homepage (patient, doctor, admin, hospital, unidentified accounts). And actual homepage of the whole project. 
+- For every thing I need a homepage (patient, doctor, admin, hospital, unidentified accounts). And actual homepage of the whole project. ✅
     
 
 - Making and implementing these forms are gonna take time.
