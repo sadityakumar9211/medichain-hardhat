@@ -83,11 +83,11 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         patient.phoneNumber = _phoneNumber;
         patient.bloodGroup = _bloodGroup;
         patient.dateOfRegistration = block.timestamp;
-        patient.vaccinationHash = new string[](0);
-        patient.accidentHash = new string[](0);
-        patient.chronicHash = new string[](0);
-        patient.acuteHash = new string[](0);
-
+        patient.vaccinationHash = new string[](0);   //0
+        patient.accidentHash = new string[](0);     // 1    
+        patient.chronicHash = new string[](0);      //2    
+        patient.acuteHash = new string[](0);        //3
+ 
         s_patients[_patientAddress] = patient;
         //emiting the event
         emit patientsDetailsModified(_patientAddress, patient);

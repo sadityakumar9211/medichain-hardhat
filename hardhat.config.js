@@ -50,7 +50,7 @@ module.exports = {
         },
         kovan: {
             url: KOVAN_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
+            accounts: OWNER_PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             //accounts: {
             //     mnemonic: MNEMONIC,
             // },
@@ -60,7 +60,7 @@ module.exports = {
         },
         rinkeby: {
             url: RINKEBY_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
+            accounts: OWNER_PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             //   accounts: {
             //     mnemonic: MNEMONIC,
             //   },
@@ -70,7 +70,7 @@ module.exports = {
         },
         mainnet: {
             url: MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
+            accounts: OWNER_PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             //   accounts: {
             //     mnemonic: MNEMONIC,
             //   },
@@ -80,7 +80,7 @@ module.exports = {
         },
         polygon: {
             url: POLYGON_MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
+            accounts: OWNER_PRIVATE_KEY !== undefined ? [OWNER_PRIVATE_KEY, HOSPITAL_PRIVATE_KEY, DOCTOR_PRIVATE_KEY, PATIENT_PRIVATE_KEY] : [],
             saveDeployments: true,
             chainId: 137,
             blockConfirmations: 6, 
