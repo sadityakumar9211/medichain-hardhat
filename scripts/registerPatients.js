@@ -11,7 +11,6 @@ async function registerPatients() {
         const tx = await patientMedicalRecordSystem.registerPatient(
             patient.patientAddress, 
             patient.name,
-            patient.profilePicture,
             patient.dob,
             patient.phoneNumber,
             patient.bloodGroup
