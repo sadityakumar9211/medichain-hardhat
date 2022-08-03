@@ -35,11 +35,11 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     // event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
     event AddedPatient(
         address indexed patientAddress,
-        string indexed name, 
-        string[] indexed chronicHash,
-        uint256 dob, 
+        string name, 
+        string[] chronicHash,
+        uint256 indexed dob, 
         string bloodGroup, 
-        uint256 dateOfRegistration,
+        uint256 indexed dateOfRegistration,
         string[] vaccinationHash,
         string phoneNumber,
         string[] accidentHash,
@@ -48,16 +48,16 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     ); //added or modified
     event AddedDoctor(
         address indexed doctorAddress,
-        string indexed name, 
-        string indexed doctorRegistrationId,
-        uint256 dateOfRegistration,
+        string name, 
+        string doctorRegistrationId,
+        uint256 indexed dateOfRegistration,
         string specialization,
-        address hospitalAddress
+        address indexed hospitalAddress
     ); //added or modified to the mapping
     event AddedHospital(
         address indexed hospitalAddress,
-        string indexed name,
-        string indexed email,
+        string name,
+        string email,
         string phoneNumber
     ); //added(mostly) or modified
 

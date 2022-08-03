@@ -10,6 +10,5 @@ library HospitalType{
         address hospitalAddress; //account address of hospital
         string email;
         string phoneNumber;
-        uint256 dateOfRegistration;
     }
 }
