@@ -133,7 +133,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
             patient.acuteHash
         );
     }
-    
+
     function addPatientDetails(
         address _patientAddress,
         uint8 _category,
@@ -207,6 +207,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string memory _phoneNumber
     ) external onlyOwner nonReentrant {
         HospitalType.Hospital memory hospital = s_hospitals[_hospitalAddress];
+        hospital.hospitalAddress = _hospitalAddress;
         hospital.name = _name;
         hospital.email = _email;
         hospital.phoneNumber = _phoneNumber;
