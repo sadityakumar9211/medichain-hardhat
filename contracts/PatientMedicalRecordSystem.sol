@@ -24,7 +24,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     mapping(address => PatientType.Patient) private s_patients;
     mapping(address => DoctorType.Doctor) private s_doctors;
     mapping(address => HospitalType.Hospital) private s_hospitals;
-
+    mapping(address => string) private s_addressToPublicKey;
     // //patientAddress -> doctorAddress -> approvdTimestamp
     // mapping(address => ApprovedDoctor) private s_approvedDoctor; //A patient can only approve one doctor at a time. Approving other doctor will override the previous approval. This is done for security purpose.
 
@@ -35,20 +35,23 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     // event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
     event AddedPatient(
         address indexed patientAddress,
-        string name, 
+        string name,
         string[] chronicHash,
-        uint256 indexed dob, 
-        string bloodGroup, 
+        uint256 indexed dob,
+        string bloodGroup,
         uint256 indexed dateOfRegistration,
+        string publicKey,
         string[] vaccinationHash,
         string phoneNumber,
         string[] accidentHash,
         string[] acuteHash
-
     ); //added or modified
+
+    event AddedPublicKey(address indexed patientAddress, string publicKey); //emitting when public key is added.
+
     event AddedDoctor(
         address indexed doctorAddress,
-        string name, 
+        string name,
         string doctorRegistrationId,
         uint256 indexed dateOfRegistration,
         string specialization,
@@ -95,7 +98,8 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string memory _name,
         uint256 _dob,
         string memory _phoneNumber,
-        string memory _bloodGroup
+        string memory _bloodGroup,
+        string memory _publicKey
     ) external {
         PatientType.Patient memory patient;
         patient.name = _name;
@@ -104,14 +108,31 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         patient.phoneNumber = _phoneNumber;
         patient.bloodGroup = _bloodGroup;
         patient.dateOfRegistration = block.timestamp;
+        patient.publicKey = _publicKey; //public key is stored here.
+
         patient.vaccinationHash = new string[](0); //0
         patient.accidentHash = new string[](0); // 1
         patient.chronicHash = new string[](0); //2
         patient.acuteHash = new string[](0); //3
 
         s_patients[_patientAddress] = patient;
-        //emiting the event
-        emit AddedPatient(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
+        s_addressToPublicKey[_patientAddress] = _publicKey;
+
+        //emiting the events
+        emit AddedPublicKey(_patientAddress, _publicKey);
+        emit AddedPatient(
+            _patientAddress,
+            patient.name,
+            patient.chronicHash,
+            patient.dob,
+            patient.bloodGroup,
+            patient.dateOfRegistration,
+            patient.publicKey,
+            patient.vaccinationHash,
+            patient.phoneNumber,
+            patient.accidentHash,
+            patient.acuteHash
+        );
     }
 
     //Adds the patient details (treatment details). This IPFS hash contains all the information about the treatment in json format pinned to pinata.
@@ -138,7 +159,19 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         }
         s_patients[_patientAddress] = patient;
         //emitting the event.
-        emit AddedPatient(_patientAddress, patient.name, patient.chronicHash, patient.dob, patient.bloodGroup, patient.dateOfRegistration, patient.vaccinationHash, patient.phoneNumber, patient.accidentHash, patient.acuteHash);
+        emit AddedPatient(
+            _patientAddress,
+            patient.name,
+            patient.chronicHash,
+            patient.dob,
+            patient.bloodGroup,
+            patient.dateOfRegistration,
+            patient.publicKey,
+            patient.vaccinationHash,
+            patient.phoneNumber,
+            patient.accidentHash,
+            patient.acuteHash
+        );
     }
 
     //this will be done using script by the owner
@@ -158,7 +191,14 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         doctor.hospitalAddress = _hospitalAddress;
         s_doctors[_doctorAddress] = doctor;
         //emitting the event.
-        emit AddedDoctor(_doctorAddress, doctor.name, doctor.doctorRegistrationId, doctor.dateOfRegistration, doctor.specialization, doctor.hospitalAddress);
+        emit AddedDoctor(
+            _doctorAddress,
+            doctor.name,
+            doctor.doctorRegistrationId,
+            doctor.dateOfRegistration,
+            doctor.specialization,
+            doctor.hospitalAddress
+        );
     }
 
     //this will be done using script by the owner
@@ -174,12 +214,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         hospital.phoneNumber = _phoneNumber;
         s_hospitals[_hospitalAddress] = hospital;
         //emitting the event.
-        emit AddedHospital(
-            _hospitalAddress,
-            hospital.name,
-            hospital.email,
-            hospital.phoneNumber
-        );
+        emit AddedHospital(_hospitalAddress, hospital.name, hospital.email, hospital.phoneNumber);
     }
 
     // function approveDoctor(address _doctorAddress) external nonReentrant {

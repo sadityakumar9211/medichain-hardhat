@@ -11,6 +11,7 @@ library PatientType {
         uint256 dob;      //
         string phoneNumber;
         string bloodGroup;     //
+        string publicKey;      //for storing public key for encrypting the data
         uint256 dateOfRegistration; //the date of registration of patient to the system. Tells which records are not in the system.
         //Medical Records
         string[] vaccinationHash; //0
