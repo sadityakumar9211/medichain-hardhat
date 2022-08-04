@@ -11,6 +11,7 @@ async function addHospitals() {
         const tx = await patientMedicalRecordSystem.addHospitalDetails(
             hospital.hospitalAddress,
             hospital.name,
+            hospital.hospitalRegistrationId,
             hospital.email,
             hospital.phone
         )

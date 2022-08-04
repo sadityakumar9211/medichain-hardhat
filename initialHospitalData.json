@@ -4,20 +4,23 @@
         "name": "Hospital 1", 
         "email": "hospital1@gmail.com",
         "phone": "+919876543210",
-        "dateOfRegistration": 1659294940
+        "dateOfRegistration": 1659294940,
+        "hospitalRegistrationId": "hos1"
     },
     {
         "hospitalAddress": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
         "name": "Hospital 2", 
         "email": "hospital2@gmail.com",
         "phone": "+918765432190",
-        "dateOfRegistration": 1659294940
+        "dateOfRegistration": 1659294940,
+        "hospitalRegistrationId": "hos2"
     },
     {
         "hospitalAddress": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
         "name": "Hospital 3", 
         "email": "hospital3@gmail.com",
         "phone": "+917654321980",
-        "dateOfRegistration": 1659294940
+        "dateOfRegistration": 1659294940,
+        "hospitalRegistrationId": "hos3"
     }
 ]
