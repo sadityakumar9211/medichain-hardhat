@@ -7,6 +7,7 @@ async function addDoctors() {
 
     for (let i in Doctors) {
         const doctor = Doctors[i]
+        console.log(doctor)
         // console.log(
         //     doctor.name,
         //     doctor.doctorRegistrationId,
