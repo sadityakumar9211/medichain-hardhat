@@ -1,3 +1,7 @@
+//This is redundant script as the public key information is not passed to the contract function while calling it. 
+//So just manually add patients to the contract.
+//Other scripts are still intact in their purpose. 
+
 const { ether, network } = require("hardhat")
 const { moveBlocks } = require("../utils/move-blocks")
 const Patients = require("../initialPatientInformation.json")
@@ -13,7 +17,7 @@ async function registerPatients() {
             patient.name,
             patient.dob,
             patient.phoneNumber,
-            patient.bloodGroup
+            patient.bloodGroup,
         )
         await tx.wait(1)
         console.log(`Patient ${patient.name} added to PatientMedicalRecordSystem`)

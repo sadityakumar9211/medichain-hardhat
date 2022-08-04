@@ -8,6 +8,8 @@ library HospitalType{
     struct Hospital{
         string name;
         address hospitalAddress; //account address of hospital
+        uint256 dateOfRegistration;
+        string hospitalRegistrationId;
         string email;
         string phoneNumber;
     }

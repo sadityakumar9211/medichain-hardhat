@@ -25,14 +25,10 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     mapping(address => DoctorType.Doctor) private s_doctors;
     mapping(address => HospitalType.Hospital) private s_hospitals;
     mapping(address => string) private s_addressToPublicKey;
-    // //patientAddress -> doctorAddress -> approvdTimestamp
-    // mapping(address => ApprovedDoctor) private s_approvedDoctor; //A patient can only approve one doctor at a time. Approving other doctor will override the previous approval. This is done for security purpose.
 
     address private immutable i_owner;
 
     //Events
-    // event DoctorApproved(address indexed doctorAddress, address indexed patientAddress);
-    // event DoctorRevoked(address indexed doctorAddress, address indexed patientAddress);
     event AddedPatient(
         address indexed patientAddress,
         string name,
@@ -60,6 +56,8 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     event AddedHospital(
         address indexed hospitalAddress,
         string name,
+        string hospitalRegistrationId,
+        uint256 indexed dateOfRegistration,
         string email,
         string phoneNumber
     ); //added(mostly) or modified
@@ -100,7 +98,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string memory _phoneNumber,
         string memory _bloodGroup,
         string memory _publicKey
-    ) external {
+    ) external nonReentrant {
         PatientType.Patient memory patient;
         patient.name = _name;
         patient.patientAddress = _patientAddress;
@@ -205,6 +203,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     function addHospitalDetails(
         address _hospitalAddress,
         string memory _name,
+        string memory _hospitalRegistrationId,
         string memory _email,
         string memory _phoneNumber
     ) external onlyOwner nonReentrant {
@@ -212,24 +211,20 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         hospital.name = _name;
         hospital.email = _email;
         hospital.phoneNumber = _phoneNumber;
+        hospital.hospitalRegistrationId = _hospitalRegistrationId;
+        hospital.dateOfRegistration = block.timestamp;
         s_hospitals[_hospitalAddress] = hospital;
         //emitting the event.
-        emit AddedHospital(_hospitalAddress, hospital.name, hospital.email, hospital.phoneNumber);
+        emit AddedHospital(
+            hospital.hospitalAddress,
+            hospital.name,
+            hospital.hospitalRegistrationId,
+            hospital.dateOfRegistration,
+            hospital.email,
+            hospital.phoneNumber
+        );
     }
 
-    // function approveDoctor(address _doctorAddress) external nonReentrant {
-    //     s_approvedDoctor[msg.sender].timestampOfApproval = block.timestamp; //current timestamp
-    //     emit DoctorApproved(_doctorAddress, msg.sender);
-    // }
-
-    // //revoking the approval of a doctor
-    // function revokeApproval(address _doctorAddress) external nonReentrant {
-    //     s_approvedDoctor[msg.sender].doctorAddress = 0x0000000000000000000000000000000000000000; //timestamp 0 means that the doctor is not authorized.
-    //     emit DoctorRevoked(_doctorAddress, msg.sender);
-    // }
-
-    //view or pure functions
-    //patient viewing his own records only
     function getMyDetails() external view returns (PatientType.Patient memory) {
         return s_patients[msg.sender];
     }
@@ -240,7 +235,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         view
         onlyDoctor
         returns (
-            /*onlyApproved(_patientAddress, msg.sender)*/
             PatientType.Patient memory
         )
     {
