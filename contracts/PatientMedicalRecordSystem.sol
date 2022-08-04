@@ -2,6 +2,11 @@
 
 pragma solidity ^0.8.7;
 
+/// @title A smart contract supporting the Decentralized Patient Medical Record System
+/// @author Aditya Kumar Singh @ July 2022
+/// @notice This smart contract is a part of my 2nd Year Summer Project
+/// @dev All function calls are currently implemented without side effects
+
 //imports
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import {DoctorType} from "./DoctorType.sol";
@@ -14,11 +19,7 @@ error PatientMedicalRecords__NotDoctor();
 error PatientMedicalRecords__NotApproved();
 
 contract PatientMedicalRecordSystem is ReentrancyGuard {
-    //Type Declarations
-    struct ApprovedDoctor {
-        address doctorAddress;
-        uint256 timestampOfApproval;
-    }
+    //Type Declaration
 
     //Storage Variables
     mapping(address => PatientType.Patient) private s_patients;
@@ -132,8 +133,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
             patient.acuteHash
         );
     }
-
-    //Adds the patient details (treatment details). This IPFS hash contains all the information about the treatment in json format pinned to pinata.
+    
     function addPatientDetails(
         address _patientAddress,
         uint8 _category,
@@ -141,7 +141,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     )
         external
         onlyDoctor
-        /*onlyApproved(_patientAddress, msg.sender)*/
         nonReentrant
     {
         PatientType.Patient memory patient = s_patients[_patientAddress];
@@ -241,6 +240,10 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         return s_patients[_patientAddress];
     }
 
+    function getPublicKey(address _patientAddress) public view returns (string memory){
+        return s_addressToPublicKey[_patientAddress];
+    }
+
     function getDoctorDetails(address _doctorAddress)
         external
         view
@@ -256,11 +259,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     {
         return s_hospitals[_hospitalAddress];
     }
-
-    // //patients can check his approved doctor's list.
-    // function getApprovedDoctor() external view returns (ApprovedDoctor memory) {
-    //     return s_approvedDoctor[msg.sender];
-    // }
 
     function getPatientRecordsByOwner(address _patientAddress)
         external
