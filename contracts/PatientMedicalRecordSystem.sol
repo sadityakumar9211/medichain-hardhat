@@ -78,14 +78,6 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         _;
     }
 
-    // modifier onlyApproved(address _patientAddress, address _doctorAddress) {
-    //     if (s_approvedDoctor[_patientAddress].doctorAddress != _doctorAddress) {
-    //         //if approve timestamp is == 0 (same as epoch time)
-    //         revert PatientMedicalRecords__NotApproved();
-    //     }
-    //     _;
-    // }
-
     constructor() {
         i_owner = msg.sender;
     }
