@@ -17,6 +17,7 @@ import {PatientType} from "./PatientType.sol";
 error PatientMedicalRecords__NotOwner();
 error PatientMedicalRecords__NotDoctor();
 error PatientMedicalRecords__NotApproved();
+error PatientMedicalRecords__NotPatient();
 
 contract PatientMedicalRecordSystem is ReentrancyGuard {
     //Type Declaration
@@ -92,6 +93,9 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string memory _bloodGroup,
         string memory _publicKey
     ) external nonReentrant {
+        if(msg.sender != _patientAddress) {
+            revert PatientMedicalRecords__NotPatient();
+        }
         PatientType.Patient memory patient;
         patient.name = _name;
         patient.patientAddress = _patientAddress;
