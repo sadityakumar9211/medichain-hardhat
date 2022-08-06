@@ -44,9 +44,11 @@ module.exports = {
             //   url: MAINNET_RPC_URL
             // }
             chainId: 31337,
+            allowUnlimitedContractSize: true
         },
         localhost: {
             chainId: 31337,
+            allowUnlimitedContractSize: true
         },
         kovan: {
             url: KOVAN_RPC_URL,
@@ -67,6 +69,7 @@ module.exports = {
             saveDeployments: true,
             chainId: 4,
             blockConfirmations: 6, 
+            allowUnlimitedContractSize: true
         },
         mainnet: {
             url: MAINNET_RPC_URL,
@@ -77,6 +80,7 @@ module.exports = {
             saveDeployments: true,
             chainId: 1,
             blockConfirmations: 6, 
+            allowUnlimitedContractSize: true
         },
         polygon: {
             url: POLYGON_MAINNET_RPC_URL,
@@ -84,6 +88,7 @@ module.exports = {
             saveDeployments: true,
             chainId: 137,
             blockConfirmations: 6, 
+            allowUnlimitedContractSize: true
         },
     },
     etherscan: {

@@ -18,6 +18,7 @@ async function registerPatients() {
             patient.dob,
             patient.phoneNumber,
             patient.bloodGroup,
+            patient.publicKey
         )
         await tx.wait(1)
         console.log(`Patient ${patient.name} added to PatientMedicalRecordSystem`)
@@ -33,3 +34,5 @@ registerPatients()
         console.log(error)
         process.exit(1)
     })
+
+module.exports = { registerPatients }

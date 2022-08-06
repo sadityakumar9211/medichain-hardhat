@@ -71,8 +71,8 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         _;
     }
 
-    modifier onlyDoctor() {
-        if (s_doctors[msg.sender].doctorAddress != msg.sender) {
+    modifier onlyDoctor(address senderAddress) {
+        if (s_doctors[senderAddress].doctorAddress != senderAddress) {
             revert PatientMedicalRecords__NotDoctor();
         }
         _;
@@ -132,7 +132,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string memory _IpfsHash //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
     )
         external
-        onlyDoctor
+        onlyDoctor(msg.sender)
         nonReentrant
     {
         PatientType.Patient memory patient = s_patients[_patientAddress];
@@ -225,7 +225,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     function getPatientDetails(address _patientAddress)
         external
         view
-        onlyDoctor
+        onlyDoctor(msg.sender)
         returns (
             PatientType.Patient memory
         )
