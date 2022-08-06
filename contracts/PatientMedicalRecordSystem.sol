@@ -175,6 +175,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         DoctorType.Doctor memory doctor;
         doctor.name = _name;
         doctor.doctorRegistrationId = _doctorRegistrationId;
+        doctor.doctorAddress = _doctorAddress;
         doctor.dateOfRegistration = _dateOfRegistration;
         doctor.specialization = _specialization;
         doctor.hospitalAddress = _hospitalAddress;
