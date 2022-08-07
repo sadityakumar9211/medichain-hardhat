@@ -93,7 +93,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         string memory _bloodGroup,
         string memory _publicKey
     ) external nonReentrant {
-        if(msg.sender != _patientAddress) {
+        if (msg.sender != _patientAddress) {
             revert PatientMedicalRecords__NotPatient();
         }
         PatientType.Patient memory patient;
@@ -134,11 +134,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         address _patientAddress,
         uint8 _category,
         string memory _IpfsHash //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
-    )
-        external
-        onlyDoctor(msg.sender)
-        nonReentrant
-    {
+    ) external onlyDoctor(msg.sender) nonReentrant {
         PatientType.Patient memory patient = s_patients[_patientAddress];
 
         if (_category == 0) {
@@ -230,41 +226,55 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
     function getPatientDetails(address _patientAddress)
         external
         view
-        onlyDoctor(msg.sender)
         returns (
-            PatientType.Patient memory
+            string memory,
+            string memory,
+            uint256
         )
     {
-        return s_patients[_patientAddress];
+        return (
+            s_patients[_patientAddress].name,
+            s_patients[_patientAddress].publicKey,
+            s_patients[_patientAddress].dateOfRegistration
+        );
     }
 
-    function getPublicKey(address _patientAddress) public view returns (string memory){
+    function getPublicKey(address _patientAddress) public view returns (string memory) {
         return s_addressToPublicKey[_patientAddress];
     }
 
     function getDoctorDetails(address _doctorAddress)
         external
         view
-        returns (DoctorType.Doctor memory)
+        returns (
+            string memory,
+            string memory,
+            string memory,
+            address
+        )
     {
-        return s_doctors[_doctorAddress];
+        return (
+            s_doctors[_doctorAddress].name,
+            s_doctors[_doctorAddress].specialization,
+            s_doctors[_doctorAddress].doctorRegistrationId,
+            s_doctors[_doctorAddress].hospitalAddress
+        );
     }
 
     function getHospitalDetails(address _hospitalAddress)
         external
         view
-        returns (HospitalType.Hospital memory)
+        returns (
+            string memory,
+            string memory,
+            string memory
+        )
     {
-        return s_hospitals[_hospitalAddress];
-    }
-
-    function getPatientRecordsByOwner(address _patientAddress)
-        external
-        view
-        onlyOwner
-        returns (PatientType.Patient memory)
-    {
-        return s_patients[_patientAddress];
+        return (
+            s_hospitals[_hospitalAddress].name,
+            s_hospitals[_hospitalAddress].hospitalRegistrationId,
+            s_hospitals[_hospitalAddress].email
+        );
     }
 
     function getOwner() external view returns (address) {
