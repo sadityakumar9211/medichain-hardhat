@@ -132,11 +132,10 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
 
     function addPatientDetails(
         address _patientAddress,
-        uint8 _category,
+        uint16 _category,
         string memory _IpfsHash //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
-    ) external onlyDoctor(msg.sender) nonReentrant {
-        PatientType.Patient memory patient = s_patients[_patientAddress];
-
+    ) external onlyDoctor(msg.sender) nonReentrant 
+    {
         if (_category == 0) {
             s_patients[_patientAddress].vaccinationHash.push(_IpfsHash);
         } else if (_category == 1) {
@@ -146,7 +145,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         } else if (_category == 3) {
             s_patients[_patientAddress].acuteHash.push(_IpfsHash);
         }
-        s_patients[_patientAddress] = patient;
+        PatientType.Patient memory patient = s_patients[_patientAddress];
         //emitting the event.
         emit AddedPatient(
             _patientAddress,
