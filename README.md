@@ -223,9 +223,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-
-# Thank you!
-
 If you appreciated this, feel free to follow me or donate!
 
 ETH Address: 0xED5A704De64Ff9699dB62d09248C8d179bb77D8A
