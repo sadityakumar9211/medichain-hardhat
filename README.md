@@ -43,7 +43,7 @@
     <br>
     <br />
     <br />
-    <a href="https://medichain.vercel.app">View Demo</a>
+    <a href="https://medichain.vercel.app">Visit Site</a>
     ·
     <a href="https://github.com/sadityakumar9211/medichain-hardhat/issues">Report Bug</a>
     ·
@@ -51,6 +51,7 @@
   </p>
 </div>
 
+### This is the hardhat repository of this project.
 
 
 <!-- TABLE OF CONTENTS -->
@@ -103,7 +104,7 @@ the patient. Electronic Medical Records are extremely valuable to hackers search
 
 * In emergency situations, the access to reliable and relevant information to doctors can crucially guide and direct diagnosis tests and/or treatment plan which can have significant life saving impact.
 
-### This is the hardhat repository of this project. The links to other repositories of this project is at the top.
+### The links to other repositories of this project is at the top.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
