@@ -1,11 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
+*** This README is created using template from https://github.com/othneildrew/Best-README-Template
 -->
 
 
@@ -30,23 +26,28 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/sadityakumar9211/medichain-hardhat">
+    <img src="logo.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">MediChain: Decentralized Medical Record Keeping System</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    This repository is one of the three repositories which are part of MediChain Project.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://ipfs.infura.io/QmZtqbqPkm74j43Lhwd93fvDXCDCdYB8y8Gnaayc1f9LWG"><strong>Explore the Final Project Report »</strong></a> 
+    <br>
+    <a href="https://github.com/sadityakumar9211/medichain-nextjs"><strong> <i>medichain-nextjs</i>: Frontend Repository of MediChain Project»</strong></a>
+    <br>
+    <a href="https://github.com/sadityakumar9211/medichain-thegraph"><strong> <i>medichain-thegraph</i>: The Graph Repository of MediChain Project»</strong></a>
+    <br>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https:medichain/vercel.app">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/sadityakumar9211/medichain-hardhat/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/sadityakumar9211/medichain-hardhat/issues">Request Feature</a>
   </p>
 </div>
 
@@ -57,7 +58,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-projecť">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -70,7 +71,6 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -83,102 +83,114 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img width="1278" alt="image" src="https://user-images.githubusercontent.com/78147198/184471278-42e393d0-db94-4577-bdc9-328510b777c0.png">
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Blockchain being an immutable ledger and with decentralized nature has a great potential for increasing the security, privacy and efficiency of Medical Health Record keeping systems. Currently existing solutions rely on centralised database which are susceptible to Ransomware attacks, Denial of Service(DoS) attacks and also have significant counterparty risks. Some decentralized solutions are also exist but some of them are not really decentralized that are based on private or permis- sioned blockchain, while some which are based on public blockchain have not properly addressed the performance and scalability issues. 
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+The proposed system is based on EVM compatible public blockchains using IPFS as a decentralized file storage solution and uses 2048 bit RSA encryption to encrypt the IPFS HASH of file metadata on the client-side before uploading the HASH on the blockchain. For supporting fast and complex queries this system uses a decentralized indexing protocol *The Graph*. The smart contract is currently deployed on *Rinkeby Testnet*.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+With this system patients can access their medical records anytime anywhere without the counterparty risk from centralized entity. This system also features QR code for sharing of medical files from patients to doctors. With the proposed implementation the decentralized medical record keeping system provides increased security and privacy compared to centralized systems without loss of significant performance or scalability benefits.
 
-Use the `BLANK_README.md` to get started.
+Here's why we need a decentralized system:
+* **Confidential and Sensitive Data**: The medical data of a patient is highly sensitive, personal and confidential in nature as it can very easily be exploited to cause serious harm to
+the patient. Electronic Medical Records are extremely valuable to hackers searching for detailed personal identifying information, which makes securing this information an utmost priority as ransomware attacks and various other forms of data breaches pose daily challenges for hospitals.
 
+* **Unorganised Records**: Patients visit various hospitals and to various doctors and get medical files which can fall into different categories like vaccination, chronic, acute, etc. This data is often stored and spread across different facilities and providers, which is unsecure and can result in tedious and inefficient processes – especially when this data needs to be accessed in an emergency.
+
+* **Cooperation Problem**: Suppose, a patient visits Hospital A usually, but if he visits Hospital B this time, then Hospital A might deny access of his medical records to Hospital B. Even if it does not deny access, it certainly can delay the process. This system will give control of the patient’s medical data to the patient themselves and patients can themselves choose who has access to their medical data.
+
+* In addition, patients are often required to physically carry their medical information when doctors refer patients to other physicians. Often these documents are not properly managed and doctors have to retake those tests. These documents are even harder to manage for chronic patients.
+
+* In emergency situations, the access to reliable and relevant information to doctors can crucially guide and direct diagnosis tests and/or treatment plan which can have significant life saving impact.
+
+### This is the hardhat repository of this project. The links to other repositories of this project is at the top.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+The following is a list of major tools used for developing this repository.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+- [![Hardhat][Hardhat]][Hardhat-url]
+- [![Openzeppelin][Openzeppelin.io]][Openzeppelin-url]
+- [![Ethers][Ethers.js]][Ethers-url]
+- [![Rinkeby Testnet][Rinkeby]][Rinkeby-url]
+- [![Alchemy][Alchemy]][Alchemy-url]
+- [![Etherscan][Etherscan]][Etherscan-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+# Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+## Requirements
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
+- [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+  - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
+- [Nodejs](https://nodejs.org/en/)
+  - You'll know you've installed nodejs right if you can run:
+    - `node --version` and get an ouput like: `vx.x.x`
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) instead of `npm`
+  - You'll know you've installed yarn right if you can run:
+    - `yarn --version` and get an output like: `x.x.x`
+    - You might need to install it with `npm`
+- Optional Package
+  - For convenience in development globally install `hardhat-shorthand`. More info [here](https://www.npmjs.com/package/hardhat-shorthand)
+  ```bash
+  yarn global add hardhat-shorthand
   ```
+## Quickstart
 
-### Installation
+```bash
+git clone https://github.com/sadityakumar9211/medichain-hardhat
+cd medichain-hardhat
+yarn
+```
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+### Optional Gitpod
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+If you can't or don't want to run and install locally, you can work with this repo in Gitpod. If you do this, you can skip the `clone this repo` part.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/sadityakumar9211/medichain-hardhat)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+# Deployment to a testnet or mainnet
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+1. Setup environment variabltes
 
+You'll want to set your `RINKEBY_RPC_URL` and `OWNER_PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
+
+- `OWNER_PRIVATE_KEY`: The private key of your account (like from [metamask](https://metamask.io/)). **NOTE:** FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
+  - You can [learn how to export it here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key).
+
+- `RINKEBY_RPC_URL`: This is url of the kovan testnet node you're working with. You can get setup with one for free from [Alchemy](https://alchemy.com/)
+
+- `ETHERSCAN_API_KEY`: This is the API key generate from [here](https://docs.etherscan.io/) for used for verification of deployed smart contract code.
+
+2. Get testnet ETH
+
+Head over to [faucets.chain.link](https://faucets.chain.link/) and get some tesnet ETH. You should see the ETH show up in your metamask.
+
+3. Deploy
+
+```bash
+yarn hardhat deploy --network rinkeby
+```
+OR
+```bash
+hh deploy --network rinkeby
+```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -202,7 +214,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -211,9 +223,20 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+# Thank you!
+
+If you appreciated this, feel free to follow me or donate!
+
+ETH Address: 0xED5A704De64Ff9699dB62d09248C8d179bb77D8A
+
+[![Aditya Singh Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saditya9211/)
+[![Aditya Singh Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/PatrickAlphaC)
+[![Aditya Singh StackOverflow](https://img.shields.io/badge/StackOverflow-white?style=for-the-badge&logo=stackoverflow&logoColor=orange)](https://stackoverflow.com/users/14769639/saditya)
+[![Aditya Singh Medium](https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@sadityakumar9211)
+[![Aditya Singh Gmail](https://img.shields.io/badge/Gmail-white?style=for-the-badge&logo=gmail)](mailto:sadityakumar9211@gmail.com)
+
+Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://github.com/sadityakumar9211/medichain-hardhat)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -222,16 +245,14 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
 * [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [hardhat-deploy](https://www.npmjs.com/package/hardhat-deploy)
+* [hardhat-etherscan](https://www.npmjs.com/package/@nomiclabs/hardhat-etherscan)
+* [hardhat-gas-reporter](https://www.npmjs.com/package/hardhat-gas-reporter)
+* [hardhat-contract-sizer](https://www.npmjs.com/package/hardhat-contract-sizer)
+* [solhint](https://www.npmjs.com/package/solhint)
+* [solidity-coverage](https://www.npmjs.com/package/solidity-coverage)
+* [MetaMask](https://metamask.io/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -239,32 +260,39 @@ Use this space to list resources you find helpful and would like to give credit 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
+[contributors-url]: https://github.com/sadityakumar9211/medichain-hardhat/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
+[forks-url]: https://github.com/sadityakumar9211/medichain-hardhat/network/members
+[stars-shield]: https://img.shields.io/github/stars/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
+[stars-url]: https://github.com/sadityakumar9211/medichain-hardhat/stargazers
+[issues-shield]: https://img.shields.io/github/issues/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
+[issues-url]: https://github.com/sadityakumar9211/medichain-hardhat/issues
+[license-shield]: https://img.shields.io/github/license/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
+[license-url]: https://github.com/sadityakumar9211/medichain-hardhat/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+[linkedin-url]: https://linkedin.com/in/saditya9211
+[product-screenshot]: https://user-images.githubusercontent.com/78147198/184471278-42e393d0-db94-4577-bdc9-328510b777c0.png
+
+<!-- This is the beginning of the URLs of Badges -->
+[Ethers.js]: https://img.shields.io/badge/Ethers.js-28359A?style=for-the-badge&logoColor=gray
+[Ethers-url]: https://docs.ethers.io/v5/
+
+
+[Openzeppelin.io]: https://img.shields.io/badge/Openzeppelin-282844?style=for-the-badge&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEVOXuT%2F%2F%2F9LXORAU%2BNDVePM0PZkcefw8f1OX%2BVGV%2BNJWuOjqvBKW%2BRFVuOepu8%2BUeJ8h%2BqrsvH09f07TuLX2vhYZ%2BWGkOv5%2Bv6zufJSYuVfbebt7%2Fzz9P3Kzvbi5Pq%2Bw%2FRwfOjW2fiLley7wPNodeeTm%2B2Yoe7k5vqDjeunrvB3gupueuiJk%2BzDyPXLz%2Fd%2FievobrfvAAAJXUlEQVR42u3diZaiuvbH8d%2Fe2YqJUKCACM7lVJPV7%2F90%2F%2BFMq73dpgaTCN7zeYNvDSFZIQHk3Xj5vho9vGWv%2FbIcABiUZf81ezxMt4vlmLzzWTg%2Fnp4nO85TJYk2MTP%2BxhwbnYhK83j3NFwt590rrJar%2FWudqsTEsIuNlrRe77fLqjuFy2lWaqVjxqfFWpIymy47UFidJgMRw%2Fg6NiKDyaJqc2G0fUmVre4TlSp%2F2UbtLJyvMhGD6xlJslXUusLiqVYGrhhVv23aVFhNGzEMl1hLM6paUjh7zIXhHkt%2BWLagcJOlGr7o9Km4cWHxogx8Mmrd819o6RMD34x63dyo8LhODUIwaXa8QWG0zw1CMfk%2BClxYjaARktajKmThphFGYKrfC1ZYvakY4cXyWIUpPGmN29DJKUDhfJLjdvKnue%2FCRalxS7p%2B91t4EMZtsRw8Fs4awe1JE%2FkqXIhBGxhZ%2BCl8UIx2YHnwUFhlCu0hWeW6cNZotIluZm4LCzZoF8OFy8KTMNqG5eSucCuM9uFk66rwOUU7pc9uCocp2iodOih0HBg%2BEYEDwycicGD4RIQfZAIPN%2FbCbYr2S7ffLzwl6AI5fbewEEYXsBTfK5wxoxuYZ98prBqDrjBN9Y3CTKM7dPb1wgdBl6jhVwsXgm5Ri68VRsLoFk5mXypsDLrGNF8pPAi6Rw6fL3wXdJEsPls4rxldxOX4k4VPGt2kJ58rPOXoqvz0mcIqQXfp6hOFj7rLhW8fF%2FYEXaY2HxVW%2FRhdFjeVvZBGCt0mI3thpNFxjMha%2BKjRdXpvKzzm6L70aCnMDLrPrC8XblLcA1VcLHw1uAfm5VJhT%2BE%2BSHGhcG1wH8zL7wsLhXuhNr8tfDK4F%2BbH7wqXKe5HOvtN4UHjfujHXwurHNfRyiXGddLql8KRXBk46rm0uzJRpr8UNoyrpBtyqNC4Djf%2FWbgRXCftkUM74%2BKpf1b4pttUOE1xLTM5L5zX3KLCscbVuJ6fFa4UWlDodB2uVmeFmWlBodvpo8l%2BLowStKDQ8SJOop8Kt9KiwqnACdn%2BVPhi2lMY1ex0DQUnMzaXhYcEjqTVP4UL1YJC90sctfincGLaU7iL4YqZ%2FFM44NYUrlI4w4O%2FC5eCNhS632CX5V%2BF0%2FYUHhI4JNO%2FCjPTlsLCwCWT%2FVlYldyWwrXbQi6rPwqXCVpSeFJwSy%2F%2FKNxKSwqrmuGWrP4o3OuWFB4SH3uJIFrH7Sg8KrgWr4lA8xouyGkeXWX8YuAa13OCs4ng4EqI%2FewHg1aC4DjWiZwzvo5igIY6dJ6WuJk8PI9%2BNs1ieJA8E0JvOcXS7Htz%2BkXD8MBMCLSLEQ6r3akKeDQg3hEoZKAZbCv3TwobJoxzBCOvM%2Fq9HwZ%2B5GME3BhND54mpBaqwEIhEHmmC8YleyvsYSsIQz3QJc8CX2SFaYIg9BNdctTwJhkh0PY91xFdkhl4ox%2FwZhCCOtElixz%2BmDdkMQIwGV1SlQx%2F4gyvjADUkS4ZCjziNfohCmVIlywZPvEOJfzjsrIPMx6VKG87zLwr%2BC4cwDvzZDkwHsOvAQKQZdBhJjzL5WqzHHeAa7roxcC%2FATxLLbMZCdFXhp%2FNBD1FVnov1McAiyaLxvecJnkIsGiy4D7WXgvjZkyX%2FDAhCl%2BRxTeazfRSBBBnmJhwh6zOlIwAzCMeNPxJrcNMCPqAUQJvxDrMBJFMsZLAtziEvbdBtnhX4WczAY%2FJqXcU6S2GmSZGGOnS476FXgYcZiz7FsQ3WDSlCIX97R%2FyoAo6zFj2Dz098tWKLuklCMU8Eeg5CTzMhLx6Qw8JdFKBh5mRIBhZEeiYBl40Mf7CRl8Uu3pYEGhe8y1mM0Yl%2FafD8ILntZvEem5%2Fr83lMHN%2Bb0MiP04RWQy1u%2FfaaK%2FhmHm1L5p0PByT3YN2%2BG6i%2B7l3ah1mWN5mREEKZftH4VIHud7vD7MBs94SBSrUS%2Ft73h6GmYmOUZDrQvt73u43uGRLl2yE9ZGCFZrs%2FLyFI%2BbFMpsxakPhCmV6fmbGkaSgS0ZKjShk4fL83JMbyZ4umSdmTQELeXB%2Bds0Njm2LJl2ELDST8%2FOHbqSW2YxK9uSt0H7%2BsEoDLJpoZ%2Bp50MK8Oj8H7ERim82kUwpZaF7sZ7ldDzNRbRryWWg%2Fyx25KeR6TJe86bQIW5hEtjsV3C%2Ba8mRPXgvtdyrQVnleNO3MYBa2UK0sd5u4XzRNRU0paCHX0Vmhi4d%2B8kiXRAPTr8IW6jc6LyzE5zDzmKgNhS2Ujet7oiCWYUb0IwUotNwT5WAJFb9Yh5k5fc3wykIZub%2Bvrexf0hjUu%2F7XlC5mbH%2BAu6uL%2BCIA%2FEVXb9%2FTr4WzFN1leXCh45cIW1aGvxZuFO6FKn4ptKyhun0b9HlhIbgPqndeeHe%2FRLOmS4VFinuQbi4U3stt0Ca793v186OlkPb3%2Fm0EisDoOBNZC2kk6DY1Inth1cTosrhf2Qs7P3eTHn1USG%2B6%2BzeV2wurLhcm1b%2FfXfvDRCOUALcaIMA1FaFwPf9kIS0EXSTv%2F36H9L%2FpW7I0SxjdwhJ9qZAWqvsfkrUX0rBbiTKkrxbSj3v%2FtjpV%2FXv%2FPj7NmNENzDP6TiEVwt0IlIK%2BV0gnQRckC%2FpuIW1ztF%2B6pe8X0ihtf%2BAzXVNIw7YnpkOyA4VPDBpIoPCJQQMJ5D4xaKCLQnpO2zvIuCmkbcJoH5YtuSqkk3ALA0%2FkrpAKNmgXwwW5LKRZo9Emuj8jt4VUZYL2UD8qcl1I9CCMdmA1JPJQSAsxaAOTLMhPIUWN4PakmZGvQqKDMG6L5UDksZDea41b0uWC%2FBbS%2FCnH7eSTMfkuJDolGreh9YkoQCFVjxIjvFi9VRSmkKjXVwiMpdkQBSukamQ0QtIYVRSykCja5wahmHQfEQUuJDpmaZhGo9ZHIk%2BFdpu18t9o5KUg8lho1%2FPdaJStL0AhUTFJNXzR6Q97X4hCouUhF4Z7LPl%2BRhSo0K4aNaLZbZ6RZlqRAyA3Nm%2B1MnDFqHpSkBsgV%2BarLBEXkUYkW83JFZBD0fYlV4bxfWxU%2BrKNyCGQW9ViMhD5ViUbkcHkVJFbIPeW06xMRMf8%2BbhYiy6z6ZLcA3lRLbf7dZ2KNjHsYpOotF7vV8uKvAD5M1%2Buhk87zlMliTYxM%2F7GHBudiFI57ybPp%2BOc%2FAF5N14uttPDY%2Fbab8oBBhiUZX%2BdvT2MVu%2FFmLz7X0i%2BvQ3XnclgAAAAAElFTkSuQmCC&logoColor=61DAFB
+[Openzeppelin-url]: https://www.openzeppelin.com/
+
+
+[Hardhat]: https://img.shields.io/badge/Hardhat-000000?style=for-the-badge&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAYAAADhu0ooAAAGF0lEQVR42u3ZBXDbTBoG4BwzMw8dMw0d8%2F3MECw3jHZDZSbHYWamMnOYkzIzmNkOk9%2FfclpNldWmUkqJxzvzlrveZ77dzwIP93AP93AP2Jp%2FjL46H%2FTVR6OvSYa%2BRjn6GmIw2OANW91PZi8MdZ%2FFQEspBjoVGDoziqGLmDKDp8cw0KVEf10WkP2xWYLEhx1ALQMQncEuwFqxe3ZAe%2BtD%2BRHngYFOoK8O6D0M2PY4sguwbgNsOyZ%2BbalxpAIwVfx55kMHWqsJJIOzVjEIYbFWBs986GDbCQ5yoJ0KokMrVsx8aH%2F7KQ6U2abioUkzG6lK%2FQMGmgc4UNs%2B8VBTTg%2FuRX5n5gF1Ce%2FAlH0T5nJgoAMcqHWXeKgxE1BLxh3ZC5Xk988faEr6FUyZ1zmLHOyeBN0%2BjYrmMtAHsUMtLYY2%2FBvPB2lIzoCl1E4scvDUJGi1eKi5kAFyo5GYoZL4PjugVf5lGLOuUhc5eO4h6AXAUjkNaCmDoyUf9yI%2F9ZSbjewHMOdZ6IusZHAslEELxRGhQ5m0QxH3laeDtCX9GJbCwakrUTbpaujU9KGamEdhzz5xLBRpX4ExzzZ1A8kE9FsnQbsfAxpP4sh0Qhf02SeDxKoPw5Stpi%2BqfAKolgKGZPBdFY3oy3C5Kw0n9idge8VG7KjYhLoDMlzqTmP%2Bjn9e7QohUEATtQPw%2BNAT6K6pu6dE6jawHwpTDqcRXTtbi9UrVyIsnMkqSlYiJ3UFTLfSnfOxc%2BvW0HFkRw5%2FTGTimzCXCUMyMZc4kRZNI7ZuSSBQtMybF4H3PRcjabMUtrsZE%2FPr19NhZIahivjptJDMdoA530ytpn4L8YFjphq0NdRQQaFhqxAQFIf5C6Lg5xcCb58geHr5M0g2zO%2FbjqzDuHaTGCiThmltYeiTZFSkMZ34INt1CWJjllO358JFS%2BDpHcBgBGXz2hAM3xUFBVTSN8QhgQ%2FBRPkqMRcB6mhuJRVSBzKeFxkQGAcv70AhOCLyjUGwqyRizuopUVWFISWGRNKbhGxDDKWKUseC%2FZ3bdc%2BxTlxVWnHPPAyVZQSNp29jS3oF5kycT2p2lIaKq6pW8h%2FhUFPOPf4tm0FMfKFZyttVFyyUOBdatuMYdP12mAbBibbPjq57I2i6YsbqLblUqK%2BvP%2FQXI0Vs36hyYUjdlm%2Fyd9pyQLOMmDg%2BNo5ALvKPcS5yX103g%2BLNHcs4A2Ujy6iiYtNkQSKqGtUPffTnBECTN%2FBf%2BZDVvNNDVjM4ZLmzc6ZkV8JIAp3VvawbQzeLnEjn3WFIl27lhXp5L4b1WpSIsyp95dFQY%2BYZ%2FrO5mpgwNyWaqObc%2B2futmGQQCpsdvQoWByRva3XqFWt2x0mpinJBUDzekloMaCWEhPGxsRNquYy56JWb0wjkOo%2BO7pJJJHg8BW0DiymKbU9%2BmuF72bakMQ7YXg493tz4UKpc1HbDzYT0LOqUT4YkXXyQl5ojCRQTEXNU0NN8l%2FyX2DzX3eGhq3gQH18g52LOtJyjoNUWu0EiBZ57nZe6OJF%2FhQY9Zx%2BnQ7Vb32Jv9tG803GaUShYSvZRe091smBXtOPCYZuSC7hhXp6LRYHVUl%2BQoca5fP4r4QkfOGez%2BCl7KJkqcUc6AXtqGBoZOxGakMSee37RzrUkBRGQE1ZgqCBQfEPfR0EQGMbY6Fn1MKgx89qiIv86UMj%2F0aH6lMiCKgxRRA0INAJZVNQeQAKqx3XDMK37VpZHhUpHir9uzioIWlaUKYyJbtbBCOLdzWTuGcK1SeIhbLx8glAduUR5qqHCmT%2BLrvyMPNvnzdUJhJKJmLJepTsaUXTVQuDYy%2FmS%2Fa0IHzJOjpu9kDJ%2BM0NY0L%2BnUtBybihzwG6USA0buZDYZC9CWNqgSPNMOWAjTEd0G9isLzZW7vlfjbj2J71aDq45mmGsg5KDIlHnCat7D9OpOM3FUzlXDamPEAV5e8BU%2FG4y%2BHIR7MqD963zdqVgCbeBRLHntlJ0DLidZ1LhICaclwLSIdmuzK0eMzloRqJwgPGlHz2vaQh2RWhY1BL5z14hPJf6JI2QRPjBXXUO64TydtQRP3IY8YP93AP9%2FgAkkz%2F0t6IRdMAAAAASUVORK5CYII%3D&logoColor=00000
+[Hardhat-url]: https://hardhat.org/
+
+[Rinkeby]: https://img.shields.io/badge/Rinkeby-DD0031?style=for-the-badge&logoColor=white
+[Rinkeby-url]: https://rinkeby.etherscan.io/
+
+[Alchemy]: https://img.shields.io/badge/Alchemy-blue?style=for-the-badge&logoColor=white
+[Alchemy-url]: https://www.alchemy.com/
+
+[Etherscan]: https://img.shields.io/badge/Etherscan-253258?style=for-the-badge&logoColor=white
+[Etherscan-url]: https://etherscan.io/
+
+
