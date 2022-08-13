@@ -92,17 +92,6 @@ The proposed system is based on EVM compatible public blockchains using IPFS as 
 
 With this system patients can access their medical records anytime anywhere without the counterparty risk from centralized entity. This system also features QR code for sharing of medical files from patients to doctors. With the proposed implementation the decentralized medical record keeping system provides increased security and privacy compared to centralized systems without loss of significant performance or scalability benefits.
 
-Here's why we need a decentralized system:
-* **Confidential and Sensitive Data**: The medical data of a patient is highly sensitive, personal and confidential in nature as it can very easily be exploited to cause serious harm to
-the patient. Electronic Medical Records are extremely valuable to hackers searching for detailed personal identifying information, which makes securing this information an utmost priority as ransomware attacks and various other forms of data breaches pose daily challenges for hospitals.
-
-* **Unorganised Records**: Patients visit various hospitals and to various doctors and get medical files which can fall into different categories like vaccination, chronic, acute, etc. This data is often stored and spread across different facilities and providers, which is unsecure and can result in tedious and inefficient processes – especially when this data needs to be accessed in an emergency.
-
-* **Cooperation Problem**: Suppose, a patient visits Hospital A usually, but if he visits Hospital B this time, then Hospital A might deny access of his medical records to Hospital B. Even if it does not deny access, it certainly can delay the process. This system will give control of the patient’s medical data to the patient themselves and patients can themselves choose who has access to their medical data.
-
-* In addition, patients are often required to physically carry their medical information when doctors refer patients to other physicians. Often these documents are not properly managed and doctors have to retake those tests. These documents are even harder to manage for chronic patients.
-
-* In emergency situations, the access to reliable and relevant information to doctors can crucially guide and direct diagnosis tests and/or treatment plan which can have significant life saving impact.
 
 ### The links to other repositories of this project is at the top.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
