@@ -43,7 +43,7 @@
     <br>
     <br />
     <br />
-    <a href="https://medichain/vercel.app">View Demo</a>
+    <a href="https://medichain.vercel.app">View Demo</a>
     ·
     <a href="https://github.com/sadityakumar9211/medichain-hardhat/issues">Report Bug</a>
     ·
