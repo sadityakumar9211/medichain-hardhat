@@ -43,7 +43,7 @@
     <br>
     <br />
     <br />
-    <a href="https://medichain.vercel.app">View Demo</a>
+    <a href="https:medichain/vercel.app">View Demo</a>
     ·
     <a href="https://github.com/sadityakumar9211/medichain-hardhat/issues">Report Bug</a>
     ·
@@ -232,9 +232,9 @@ ETH Address: 0xED5A704De64Ff9699dB62d09248C8d179bb77D8A
 
 [![Aditya Singh Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saditya9211/)
 [![Aditya Singh Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/PatrickAlphaC)
-[![Aditya Singh StackOverflow](https://img.shields.io/badge/StackOverflow-white?style=for-the-badge&logo=stackoverflow&logoColor=orange)](https://stackoverflow.com/users/14769639/saditya)
+[![Aditya Singh StackOverflow](https://img.shields.io/badge/StackOverflow-gray?style=for-the-badge&logo=stackoverflow&logoColor=orange)](https://stackoverflow.com/users/14769639/saditya)
 [![Aditya Singh Medium](https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@sadityakumar9211)
-[![Aditya Singh Gmail](https://img.shields.io/badge/Gmail-white?style=for-the-badge&logo=gmail)](mailto:sadityakumar9211@gmail.com)
+[![Aditya Singh Gmail](https://img.shields.io/badge/Gmail-gray?style=for-the-badge&logo=gmail)](mailto:sadityakumar9211@gmail.com)
 
 Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://github.com/sadityakumar9211/medichain-hardhat)
 
