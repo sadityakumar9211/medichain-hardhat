@@ -257,7 +257,7 @@ Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://gi
 [issues-url]: https://github.com/sadityakumar9211/medichain-hardhat/issues
 [license-shield]: https://img.shields.io/github/license/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
 [license-url]: https://github.com/sadityakumar9211/medichain-hardhat/blob/master/LICENSE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://linkedin.com/in/saditya9211
 [product-screenshot]: https://user-images.githubusercontent.com/78147198/184471278-42e393d0-db94-4577-bdc9-328510b777c0.png
 
