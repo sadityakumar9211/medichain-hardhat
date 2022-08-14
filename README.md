@@ -35,7 +35,7 @@
   <p align="center">
     This repository is one of the three repositories which are part of MediChain Project.
     <br />
-    <a href="https://ipfs.infura.io/ipfs/QmZtqbqPkm74j43Lhwd93fvDXCDCdYB8y8Gnaayc1f9LWG"><strong>Explore the Final Project Report »</strong></a> 
+    <a href="https://ipfs.io/ipfs/QmZtqbqPkm74j43Lhwd93fvDXCDCdYB8y8Gnaayc1f9LWG"><strong>Explore the Final Project Report »</strong></a> 
     <br>
     <a href="https://github.com/sadityakumar9211/medichain-nextjs"><strong> <i>medichain-nextjs</i>: Frontend Repository of MediChain Project»</strong></a>
     <br>
