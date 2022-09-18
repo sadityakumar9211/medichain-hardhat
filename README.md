@@ -40,6 +40,7 @@
     <a href="https://github.com/sadityakumar9211/medichain-thegraph"><strong> <i>medichain-thegraph</i>: The Graph Repository of MediChain Project»</strong></a>
     <br>
     <br />
+    <a href="https://youtube.com/playlist?list=PLJ2CQ-kV7OQFkZfmnPIGMQLbhEUKIyWln">Watch Demo Videos</a>
     <br />
     <a href="https://medichain.vercel.app">Visit Site</a>
     ·
