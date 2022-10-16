@@ -20,7 +20,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     log(`PatientMedicalRecordSystem contract deployed at: ${patientMedicalRecordSystem.address}`)
 
     //verifying the contract
-    //verifying the contract on rinkeby.etherscan.io
+    //verifying the contract on goerli.etherscan.io
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("verifying...")
         await verify(patientMedicalRecordSystem.address, [])

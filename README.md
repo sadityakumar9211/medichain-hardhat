@@ -87,7 +87,7 @@
 
 **Blockchain** being an immutable ledger and with decentralized nature has a great potential for increasing the security, privacy and efficiency of Medical Health Record keeping systems. Currently existing solutions rely on centralised database which are susceptible to _Ransomware attacks, Denial of Service(DoS) attacks and also have significant counterparty risks._ Some decentralized solutions are also exist but some of them are not really decentralized that are based on private or permissioned blockchain, while some which are based on public blockchain have not properly addressed the performance and scalability issues. 
 
-The proposed system is based on EVM compatible public blockchains using IPFS as a decentralized file storage solution and uses 2048 bit RSA encryption to encrypt the IPFS HASH of file metadata on the client-side before uploading the HASH on the blockchain. For supporting fast and complex queries this system uses a decentralized indexing protocol *The Graph*. The smart contract is currently deployed on *Rinkeby Testnet*.
+The proposed system is based on EVM compatible public blockchains using IPFS as a decentralized file storage solution and uses 2048 bit RSA encryption to encrypt the IPFS HASH of file metadata on the client-side before uploading the HASH on the blockchain. For supporting fast and complex queries this system uses a decentralized indexing protocol *The Graph*. The smart contract is currently deployed on *Goerli Testnet*.
 
 With this system patients can access their medical records anytime anywhere without the counterparty risk from centralized entity. This system also features QR code for sharing of medical files from patients to doctors. With the proposed implementation the decentralized medical record keeping system provides increased security and privacy compared to centralized systems without loss of significant performance or scalability benefits.
 
@@ -104,7 +104,7 @@ The following is a list of major tools used for developing this repository.
 - [![Hardhat][Hardhat]][Hardhat-url]
 - [![Openzeppelin][Openzeppelin.io]][Openzeppelin-url]
 - [![Ethers][Ethers.js]][Ethers-url]
-- [![Rinkeby Testnet][Rinkeby]][Rinkeby-url]
+- [![Goerli Testnet][Goerli]][Goerli-url]
 - [![Alchemy][Alchemy]][Alchemy-url]
 - [![Etherscan][Etherscan]][Etherscan-url]
 
@@ -157,12 +157,12 @@ If you can't or don't want to run and install locally, you can work with this re
 
 1. Setup environment variabltes
 
-You'll want to set your `RINKEBY_RPC_URL` and `OWNER_PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
+You'll want to set your `GOERLI_RPC_URL` and `OWNER_PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
 
 - `OWNER_PRIVATE_KEY`: The private key of your account (like from [metamask](https://metamask.io/)). **NOTE:** FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
   - You can [learn how to export it here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key).
 
-- `RINKEBY_RPC_URL`: This is url of the kovan testnet node you're working with. You can get setup with one for free from [Alchemy](https://alchemy.com/)
+- `GOERLI_RPC_URL`: This is url of the kovan testnet node you're working with. You can get setup with one for free from [Alchemy](https://alchemy.com/)
 
 - `ETHERSCAN_API_KEY`: This is the API key generate from [here](https://docs.etherscan.io/) for used for verification of deployed smart contract code.
 
@@ -173,11 +173,11 @@ Head over to [faucets.chain.link](https://faucets.chain.link/) and get some tesn
 3. Deploy
 
 ```bash
-yarn hardhat deploy --network rinkeby
+yarn hardhat deploy --network goerli
 ```
 OR
 ```bash
-hh deploy --network rinkeby
+hh deploy --network goerli
 ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -272,8 +272,8 @@ Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://gi
 [Hardhat]: https://img.shields.io/badge/Hardhat-000000?style=for-the-badge&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAYAAADhu0ooAAAGF0lEQVR42u3ZBXDbTBoG4BwzMw8dMw0d8%2F3MECw3jHZDZSbHYWamMnOYkzIzmNkOk9%2FfclpNldWmUkqJxzvzlrveZ77dzwIP93AP93AP2Jp%2FjL46H%2FTVR6OvSYa%2BRjn6GmIw2OANW91PZi8MdZ%2FFQEspBjoVGDoziqGLmDKDp8cw0KVEf10WkP2xWYLEhx1ALQMQncEuwFqxe3ZAe%2BtD%2BRHngYFOoK8O6D0M2PY4sguwbgNsOyZ%2BbalxpAIwVfx55kMHWqsJJIOzVjEIYbFWBs986GDbCQ5yoJ0KokMrVsx8aH%2F7KQ6U2abioUkzG6lK%2FQMGmgc4UNs%2B8VBTTg%2FuRX5n5gF1Ce%2FAlH0T5nJgoAMcqHWXeKgxE1BLxh3ZC5Xk988faEr6FUyZ1zmLHOyeBN0%2BjYrmMtAHsUMtLYY2%2FBvPB2lIzoCl1E4scvDUJGi1eKi5kAFyo5GYoZL4PjugVf5lGLOuUhc5eO4h6AXAUjkNaCmDoyUf9yI%2F9ZSbjewHMOdZ6IusZHAslEELxRGhQ5m0QxH3laeDtCX9GJbCwakrUTbpaujU9KGamEdhzz5xLBRpX4ExzzZ1A8kE9FsnQbsfAxpP4sh0Qhf02SeDxKoPw5Stpi%2BqfAKolgKGZPBdFY3oy3C5Kw0n9idge8VG7KjYhLoDMlzqTmP%2Bjn9e7QohUEATtQPw%2BNAT6K6pu6dE6jawHwpTDqcRXTtbi9UrVyIsnMkqSlYiJ3UFTLfSnfOxc%2BvW0HFkRw5%2FTGTimzCXCUMyMZc4kRZNI7ZuSSBQtMybF4H3PRcjabMUtrsZE%2FPr19NhZIahivjptJDMdoA530ytpn4L8YFjphq0NdRQQaFhqxAQFIf5C6Lg5xcCb58geHr5M0g2zO%2FbjqzDuHaTGCiThmltYeiTZFSkMZ34INt1CWJjllO358JFS%2BDpHcBgBGXz2hAM3xUFBVTSN8QhgQ%2FBRPkqMRcB6mhuJRVSBzKeFxkQGAcv70AhOCLyjUGwqyRizuopUVWFISWGRNKbhGxDDKWKUseC%2FZ3bdc%2BxTlxVWnHPPAyVZQSNp29jS3oF5kycT2p2lIaKq6pW8h%2FhUFPOPf4tm0FMfKFZyttVFyyUOBdatuMYdP12mAbBibbPjq57I2i6YsbqLblUqK%2BvP%2FQXI0Vs36hyYUjdlm%2Fyd9pyQLOMmDg%2BNo5ALvKPcS5yX103g%2BLNHcs4A2Ujy6iiYtNkQSKqGtUPffTnBECTN%2FBf%2BZDVvNNDVjM4ZLmzc6ZkV8JIAp3VvawbQzeLnEjn3WFIl27lhXp5L4b1WpSIsyp95dFQY%2BYZ%2FrO5mpgwNyWaqObc%2B2futmGQQCpsdvQoWByRva3XqFWt2x0mpinJBUDzekloMaCWEhPGxsRNquYy56JWb0wjkOo%2BO7pJJJHg8BW0DiymKbU9%2BmuF72bakMQ7YXg493tz4UKpc1HbDzYT0LOqUT4YkXXyQl5ojCRQTEXNU0NN8l%2FyX2DzX3eGhq3gQH18g52LOtJyjoNUWu0EiBZ57nZe6OJF%2FhQY9Zx%2BnQ7Vb32Jv9tG803GaUShYSvZRe091smBXtOPCYZuSC7hhXp6LRYHVUl%2BQoca5fP4r4QkfOGez%2BCl7KJkqcUc6AXtqGBoZOxGakMSee37RzrUkBRGQE1ZgqCBQfEPfR0EQGMbY6Fn1MKgx89qiIv86UMj%2F0aH6lMiCKgxRRA0INAJZVNQeQAKqx3XDMK37VpZHhUpHir9uzioIWlaUKYyJbtbBCOLdzWTuGcK1SeIhbLx8glAduUR5qqHCmT%2BLrvyMPNvnzdUJhJKJmLJepTsaUXTVQuDYy%2FmS%2Fa0IHzJOjpu9kDJ%2BM0NY0L%2BnUtBybihzwG6USA0buZDYZC9CWNqgSPNMOWAjTEd0G9isLzZW7vlfjbj2J71aDq45mmGsg5KDIlHnCat7D9OpOM3FUzlXDamPEAV5e8BU%2FG4y%2BHIR7MqD963zdqVgCbeBRLHntlJ0DLidZ1LhICaclwLSIdmuzK0eMzloRqJwgPGlHz2vaQh2RWhY1BL5z14hPJf6JI2QRPjBXXUO64TydtQRP3IY8YP93AP9%2FgAkkz%2F0t6IRdMAAAAASUVORK5CYII%3D&logoColor=00000
 [Hardhat-url]: https://hardhat.org/
 
-[Rinkeby]: https://img.shields.io/badge/Rinkeby-DD0031?style=for-the-badge&logoColor=white
-[Rinkeby-url]: https://rinkeby.etherscan.io/
+[Goerli]: https://img.shields.io/badge/Goerli-DD0031?style=for-the-badge&logoColor=white
+[Goerli-url]: https://goerli.etherscan.io/
 
 [Alchemy]: https://img.shields.io/badge/Alchemy-blue?style=for-the-badge&logoColor=white
 [Alchemy-url]: https://www.alchemy.com/
