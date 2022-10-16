@@ -134,8 +134,7 @@ contract PatientMedicalRecordSystem is ReentrancyGuard {
         address _patientAddress,
         uint16 _category,
         string memory _IpfsHash //This is the IPFS hash of the diagnostic report which contains an IPFS file hash (preferably PDF file)
-    ) external onlyDoctor(msg.sender) nonReentrant 
-    {
+    ) external onlyDoctor(msg.sender) nonReentrant {
         if (_category == 0) {
             s_patients[_patientAddress].vaccinationHash.push(_IpfsHash);
         } else if (_category == 1) {
