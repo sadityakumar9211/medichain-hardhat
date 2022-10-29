@@ -203,7 +203,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the `GPL v3.0` License. See `LICENSE` for more information.
+Distributed under the `GPL v3.0` License. See [COPYING](https://github.com/sadityakumar9211/medichain-hardhat/blob/master/COPYING) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -255,7 +255,7 @@ Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://gi
 [issues-shield]: https://img.shields.io/github/issues/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
 [issues-url]: https://github.com/sadityakumar9211/medichain-hardhat/issues
 [license-shield]: https://img.shields.io/github/license/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge
-[license-url]: https://github.com/sadityakumar9211/medichain-hardhat/blob/master/LICENSE
+[license-url]: https://github.com/sadityakumar9211/medichain-hardhat/blob/master/COPYING
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://linkedin.com/in/saditya9211
 [product-screenshot]: https://user-images.githubusercontent.com/78147198/184471278-42e393d0-db94-4577-bdc9-328510b777c0.png
