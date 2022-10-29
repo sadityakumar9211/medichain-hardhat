@@ -18,7 +18,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![GPL-3.0 License][license-shield]][license-url]
+[![GPL-3.0 License](https://img.shields.io/github/license/sadityakumar9211/medichain-hardhat.svg?style=for-the-badge)](https://github.com/sadityakumar9211/medichain-hardhat/blob/master/COPYING)
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
