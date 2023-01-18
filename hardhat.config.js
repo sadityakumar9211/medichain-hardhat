@@ -162,7 +162,6 @@ module.exports = {
     },
     contractSizer: {
         runOnCompile: true,
-        // only: ["Raffle"],
     },
     namedAccounts: {
         deployer: {
