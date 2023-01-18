@@ -58,6 +58,8 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#what-problem-does-it-solve">What problem does it solve?</a></li>
+        <li><a href="#project-status">Current Status</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -80,15 +82,15 @@
 
 ## About The Project
 
-<img width="1278" alt="current image" src="https://user-images.githubusercontent.com/78147198/184471278-42e393d0-db94-4577-bdc9-328510b777c0.png">
+<img width="1278" alt="current image" src="https://gateway.pinata.cloud/ipfs/QmXvkXXZ6LCMGESiJCoifJAuZAurTyjXu4HoqMaY5Ko7d9?_gl=1*1r1ds1w*_ga*MTM2MzA3MTc2Ni4xNjc0MDczMjM4*_ga_5RMPXG14TE*MTY3NDA3MzIzNy4xLjEuMTY3NDA3MzMwMy42MC4wLjA.">
 
-#### What Problem does it Solve?
+### What Problem does it Solve?
 
 **Blockchain** being an immutable ledger and with decentralized nature has a great potential for increasing the security, privacy and efficiency of Medical Health Record keeping systems.
 
 Currently existing solutions rely on centralized database which are susceptible to _Ransomware attacks, Denial of Service(DoS) attacks and also have significant counterparty risks._ Some decentralized solutions are also exist but some of them are not really decentralized that are based on private or permissioned blockchain, while some which are based on public blockchain have not properly addressed the performance and scalability issues. There is also no virtual private and safe way for patients to interact with their doctor and vice-versa. This platform also solves that by integrating this application with the a state of the art decentralized communications channel supported by _XMTP_ and video meeting features by _Huddle01_. Further, in future I am also planning to add a DAO to this application to even more decentralize the whole system by also making patients involved in medical administration along with doctors, hospital administration and and their governing comittee.
 
-#### Project Status
+### Project Status
 
 Currently, the proposed system is based on EVM compatible public blockchains using IPFS as a decentralized file storage solution and uses 2048 bit RSA encryption to encrypt the IPFS HASH of file metadata on the client-side before uploading the HASH on the blockchain. For supporting fast and complex queries this system uses a decentralized indexing protocol _The Graph_. The smart contract is currently deployed on _Goerli Testnet_.
 
@@ -96,7 +98,7 @@ Currently, with this system patients can access their medical records anytime an
 
 At present, I am actively testing the DAO integration, for this system under a child project named **_VyroChain_**. Here is the link to [VyroChain](https://github.com/sadityakumar9211/vyrochain).
 
-##### VyroChain is a Child Project of MediChain Project for testing DAO integration.
+### VyroChain is a Child Project of MediChain Project for testing DAO integration.
 
 > The link to VyroChain is [here](https://github.com/sadityakumar9211/vyrochain)
 
@@ -116,6 +118,16 @@ The following is a list of major tools used for developing this repository.
 -   [![Goerli Testnet][goerli]][goerli-url]
 -   [![Alchemy][alchemy]][alchemy-url]
 -   [![Etherscan][etherscan]][etherscan-url]
+
+The tools used in the [NextJS](https://github.com/sadityakumar9211/medichain-nextjs) repository are: -
+-   [![Next][next.js]][next-url]
+-   [![React][react.js]][react-url]
+-   [![tailwindcss][tailwindcss]][tailwind-url]
+-   [![moralis][moralis]][moralis-url]
+-   [![web3uikit][web3uikit]][web3uikit-url]
+
+The major tools used in the [The Graph](https://github.com/sadityakumar9211/medichain-thegraph) repository are: -
+- [![The Graph][the graph]][graph-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -279,3 +291,19 @@ Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://gi
 [alchemy-url]: https://www.alchemy.com/
 [etherscan]: https://img.shields.io/badge/Etherscan-253258?style=for-the-badge&logoColor=white
 [etherscan-url]: https://etherscan.io/
+
+[next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[next-url]: https://nextjs.org/
+[react.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://reactjs.org/
+[tailwindcss]: https://img.shields.io/badge/tailwindcss-62B9F3?style=for-the-badge
+[tailwind-url]: https://tailwindcss.com
+[moralis]: https://img.shields.io/badge/moralis-7D9DF0?style=for-the-badge&logoColor=6DE9DB
+[moralis-url]: https://moralis.io
+[web3uikit]: https://img.shields.io/badge/web3uikit-72E6E0?style=for-the-badge&logoColor=6DE9DB
+[web3uikit-url]: https://web3ui.github.io/web3uikit/
+
+
+[the graph]: https://img.shields.io/badge/The_Graph-23243B?style=for-the-badge&logoColor=6DE9DB
+[graph-url]: https://thegraph.com/en/
+
