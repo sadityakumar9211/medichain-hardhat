@@ -50,6 +50,14 @@
 </div>
 
 ### This is the hardhat repository of this project.
+### Planned Changes
+> After my minor exams
+1. Rainbowkit + wagmi for connect button
+2. web3.storage for files
+3. Toast for Notifications
+4. DAO integration
+5. XMTP integration
+6. Video call integration
 
 <!-- TABLE OF CONTENTS -->
 <details>
