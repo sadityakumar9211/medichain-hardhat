@@ -50,6 +50,8 @@
 </div>
 
 ### This is the hardhat repository of this project.
+##### If `Application Error` comes after just connecting the wallet, then change the network from metamask to Goerli Testnet. This bug is unhandled for now. 
+
 ### Planned Changes
 > After my minor exams
 1. Rainbowkit + wagmi for connect button
