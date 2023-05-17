@@ -115,7 +115,8 @@ The following is a list of major tools used for developing this repository.
 -   [![Hardhat][hardhat]][hardhat-url]
 -   [![Openzeppelin][openzeppelin.io]][openzeppelin-url]
 -   [![Ethers][ethers.js]][ethers-url]
--   [![Goerli Testnet][goerli]][goerli-url]
+<!-- -   [![Goerli Testnet][goerli]][goerli-url] -->
+-   [![Sepolia Testnet][sepolia]][sepolia-url]
 -   [![Alchemy][alchemy]][alchemy-url]
 -   [![Etherscan][etherscan]][etherscan-url]
 
@@ -174,7 +175,7 @@ If you can't or don't want to run and install locally, you can work with this re
 
 1. Setup environment variabltes
 
-You'll want to set your `GOERLI_RPC_URL` and `OWNER_PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
+You'll want to set your `SEPOLIA_RPC_URL` and `OWNER_PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example`.
 
 -   `OWNER_PRIVATE_KEY`: The private key of your account (like from [metamask](https://metamask.io/)). **NOTE:** FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
 
@@ -191,13 +192,13 @@ Head over to [faucets.chain.link](https://faucets.chain.link/) and get some tesn
 3. Deploy
 
 ```bash
-yarn hardhat deploy --network goerli
+yarn hardhat deploy --network sepolia
 ```
 
 OR
 
 ```bash
-hh deploy --network goerli
+hh deploy --network sepolia
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -285,8 +286,10 @@ Project Link: [https://github.com/sadityakumar9211/medichain-hardhat](https://gi
 [openzeppelin-url]: https://www.openzeppelin.com/
 [hardhat]: https://img.shields.io/badge/Hardhat-000000?style=for-the-badge&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAYAAADhu0ooAAAGF0lEQVR42u3ZBXDbTBoG4BwzMw8dMw0d8%2F3MECw3jHZDZSbHYWamMnOYkzIzmNkOk9%2FfclpNldWmUkqJxzvzlrveZ77dzwIP93AP93AP2Jp%2FjL46H%2FTVR6OvSYa%2BRjn6GmIw2OANW91PZi8MdZ%2FFQEspBjoVGDoziqGLmDKDp8cw0KVEf10WkP2xWYLEhx1ALQMQncEuwFqxe3ZAe%2BtD%2BRHngYFOoK8O6D0M2PY4sguwbgNsOyZ%2BbalxpAIwVfx55kMHWqsJJIOzVjEIYbFWBs986GDbCQ5yoJ0KokMrVsx8aH%2F7KQ6U2abioUkzG6lK%2FQMGmgc4UNs%2B8VBTTg%2FuRX5n5gF1Ce%2FAlH0T5nJgoAMcqHWXeKgxE1BLxh3ZC5Xk988faEr6FUyZ1zmLHOyeBN0%2BjYrmMtAHsUMtLYY2%2FBvPB2lIzoCl1E4scvDUJGi1eKi5kAFyo5GYoZL4PjugVf5lGLOuUhc5eO4h6AXAUjkNaCmDoyUf9yI%2F9ZSbjewHMOdZ6IusZHAslEELxRGhQ5m0QxH3laeDtCX9GJbCwakrUTbpaujU9KGamEdhzz5xLBRpX4ExzzZ1A8kE9FsnQbsfAxpP4sh0Qhf02SeDxKoPw5Stpi%2BqfAKolgKGZPBdFY3oy3C5Kw0n9idge8VG7KjYhLoDMlzqTmP%2Bjn9e7QohUEATtQPw%2BNAT6K6pu6dE6jawHwpTDqcRXTtbi9UrVyIsnMkqSlYiJ3UFTLfSnfOxc%2BvW0HFkRw5%2FTGTimzCXCUMyMZc4kRZNI7ZuSSBQtMybF4H3PRcjabMUtrsZE%2FPr19NhZIahivjptJDMdoA530ytpn4L8YFjphq0NdRQQaFhqxAQFIf5C6Lg5xcCb58geHr5M0g2zO%2FbjqzDuHaTGCiThmltYeiTZFSkMZ34INt1CWJjllO358JFS%2BDpHcBgBGXz2hAM3xUFBVTSN8QhgQ%2FBRPkqMRcB6mhuJRVSBzKeFxkQGAcv70AhOCLyjUGwqyRizuopUVWFISWGRNKbhGxDDKWKUseC%2FZ3bdc%2BxTlxVWnHPPAyVZQSNp29jS3oF5kycT2p2lIaKq6pW8h%2FhUFPOPf4tm0FMfKFZyttVFyyUOBdatuMYdP12mAbBibbPjq57I2i6YsbqLblUqK%2BvP%2FQXI0Vs36hyYUjdlm%2Fyd9pyQLOMmDg%2BNo5ALvKPcS5yX103g%2BLNHcs4A2Ujy6iiYtNkQSKqGtUPffTnBECTN%2FBf%2BZDVvNNDVjM4ZLmzc6ZkV8JIAp3VvawbQzeLnEjn3WFIl27lhXp5L4b1WpSIsyp95dFQY%2BYZ%2FrO5mpgwNyWaqObc%2B2futmGQQCpsdvQoWByRva3XqFWt2x0mpinJBUDzekloMaCWEhPGxsRNquYy56JWb0wjkOo%2BO7pJJJHg8BW0DiymKbU9%2BmuF72bakMQ7YXg493tz4UKpc1HbDzYT0LOqUT4YkXXyQl5ojCRQTEXNU0NN8l%2FyX2DzX3eGhq3gQH18g52LOtJyjoNUWu0EiBZ57nZe6OJF%2FhQY9Zx%2BnQ7Vb32Jv9tG803GaUShYSvZRe091smBXtOPCYZuSC7hhXp6LRYHVUl%2BQoca5fP4r4QkfOGez%2BCl7KJkqcUc6AXtqGBoZOxGakMSee37RzrUkBRGQE1ZgqCBQfEPfR0EQGMbY6Fn1MKgx89qiIv86UMj%2F0aH6lMiCKgxRRA0INAJZVNQeQAKqx3XDMK37VpZHhUpHir9uzioIWlaUKYyJbtbBCOLdzWTuGcK1SeIhbLx8glAduUR5qqHCmT%2BLrvyMPNvnzdUJhJKJmLJepTsaUXTVQuDYy%2FmS%2Fa0IHzJOjpu9kDJ%2BM0NY0L%2BnUtBybihzwG6USA0buZDYZC9CWNqgSPNMOWAjTEd0G9isLzZW7vlfjbj2J71aDq45mmGsg5KDIlHnCat7D9OpOM3FUzlXDamPEAV5e8BU%2FG4y%2BHIR7MqD963zdqVgCbeBRLHntlJ0DLidZ1LhICaclwLSIdmuzK0eMzloRqJwgPGlHz2vaQh2RWhY1BL5z14hPJf6JI2QRPjBXXUO64TydtQRP3IY8YP93AP9%2FgAkkz%2F0t6IRdMAAAAASUVORK5CYII%3D&logoColor=00000
 [hardhat-url]: https://hardhat.org/
-[goerli]: https://img.shields.io/badge/Goerli-DD0031?style=for-the-badge&logoColor=white
-[goerli-url]: https://goerli.etherscan.io/
+<!-- [goerli]: https://img.shields.io/badge/Goerli-DD0031?style=for-the-badge&logoColor=white -->
+[sepolia]: https://img.shields.io/badge/Sepolia-DD0031?style=for-the-badge&logoColor=white
+<!-- [goerli-url]: https://goerli.etherscan.io/ -->
+[sepolia-url]: https://sepolia.etherscan.io/
 [alchemy]: https://img.shields.io/badge/Alchemy-blue?style=for-the-badge&logoColor=white
 [alchemy-url]: https://www.alchemy.com/
 [etherscan]: https://img.shields.io/badge/Etherscan-253258?style=for-the-badge&logoColor=white

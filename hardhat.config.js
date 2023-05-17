@@ -21,6 +21,9 @@ const POLYGON_MAINNET_RPC_URL =
     process.env.POLYGON_MAINNET_RPC_URL || "https://polygon-mainnet.alchemyapi.io/v2/your-api-key"
 const GOERLI_RPC_URL =
     process.env.GOERLI_RPC_URL || "https://eth-goerli.alchemyapi.io/v2/your-api-key"
+const SEPOLIA_RPC_URL =
+    process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.alchemyapi.io/v2/your-api-key"
+
 
 const OWNER_PRIVATE_KEY = process.env.OWNER_PRIVATE_KEY || "0x"
 const HOSPITAL_PRIVATE_KEY = process.env.HOSPITAL_PRIVATE_KEY || "0x"
@@ -107,6 +110,25 @@ module.exports = {
             blockConfirmations: 6,
             allowUnlimitedContractSize: true,
         },
+        sepolia: {
+            url: SEPOLIA_RPC_URL,
+            accounts:
+                OWNER_PRIVATE_KEY !== undefined
+                    ? [
+                          OWNER_PRIVATE_KEY,
+                          HOSPITAL_PRIVATE_KEY,
+                          DOCTOR_PRIVATE_KEY,
+                          PATIENT_PRIVATE_KEY,
+                      ]
+                    : [],
+            //   accounts: {
+            //     mnemonic: MNEMONIC,
+            //   },
+            saveDeployments: true,
+            chainId: 11155111,
+            blockConfirmations: 6,
+            allowUnlimitedContractSize: true,
+        },
 
         mainnet: {
             url: MAINNET_RPC_URL,
@@ -151,6 +173,7 @@ module.exports = {
             kovan: ETHERSCAN_API_KEY,
             polygon: POLYGONSCAN_API_KEY,
             goerli: ETHERSCAN_API_KEY,
+            sepolia: ETHERSCAN_API_KEY,
         },
     },
     gasReporter: {

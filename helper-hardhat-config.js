@@ -13,8 +13,12 @@ const networkConfig = {
         name: "hardhat",
         waitConfirmations: 1,
     },
-    5: {
-        name: "goerli",
+    // 5: {
+    //     name: "goerli",
+    //     waitConfirmations: 6,
+    // },
+    11155111: {
+        name: "sepolia",
         waitConfirmations: 6,
     }
 }

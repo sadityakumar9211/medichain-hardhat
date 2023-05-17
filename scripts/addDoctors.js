@@ -8,14 +8,6 @@ async function addDoctors() {
     for (let i in Doctors) {
         const doctor = Doctors[i]
         console.log(doctor)
-        // console.log(
-        //     doctor.name,
-        //     doctor.doctorRegistrationId,
-        //     doctor.doctorAddress,
-        //     doctor.dateOfRegistration,
-        //     doctor.specialization,
-        //     doctor.hospitalAddress
-        // )
         
         const tx = await patientMedicalRecordSystem.addDoctorDetails(
             doctor.doctorAddress,
