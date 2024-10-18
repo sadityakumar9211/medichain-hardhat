@@ -29,7 +29,7 @@
     <img src="logo.svg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">MediChain: Decentralized Telemedicine and Medical Records</h3>
+  <h3 align="center">MediChain: Decentralized Telemedicine and Medical Records [Archived] </h3>
 
   <p align="center">
     This repository is one of the three repositories which are part of MediChain Project.
@@ -49,11 +49,12 @@
   </p>
 </div>
 
-## Update
+## Latest Update
 The current version (v2) of this project is available at [github.com/myriad-org](https://github.com/myriad-org/). 
 
-### This is the hardhat repository of this project.
-##### If `Application Error` comes after just connecting the wallet, then change the network in metamask to Goerli Testnet and reload the page. This bug is unhandled for now.
+## NOTE: 
+> This is the hardhat repository of this project.
+> If `Application Error` comes after just connecting the wallet, then change the network in metamask to Goerli Testnet and reload the page. This bug is unhandled for now.
 
 <!-- TABLE OF CONTENTS -->
 <details>
