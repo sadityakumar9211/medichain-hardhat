@@ -49,6 +49,9 @@
   </p>
 </div>
 
+## Update
+The current version (v2) of this project is available at [github.com/myriad-org](https://github.com/myriad-org/). 
+
 ### This is the hardhat repository of this project.
 ##### If `Application Error` comes after just connecting the wallet, then change the network in metamask to Goerli Testnet and reload the page. This bug is unhandled for now.
 
